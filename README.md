@@ -12,7 +12,7 @@ Oct 2023
 
 1.2 - Write a Jupyter Notebook that uses the file in the database to calculate the following
 * Number of Articles
-* Number of Organisations
+* Number of Organisations (Deduplicated Affiliations)
 * Number of Researchers
 
 Note: you only need to commit the notebook, and you do not need to provide a backup of the database
