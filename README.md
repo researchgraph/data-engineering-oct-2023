@@ -3,9 +3,9 @@ Oct 2023
 
 Deadlines
 
-Task 1 - Wednesday 4th Oct. 5pm
+Task 1 - Wednesday 4th Oct. 5pm (AEST)
 
-Task 2 & 3 - Friday 6th Oct. 5pm
+Task 2 & 3 - Friday 6th Oct. 5pm (AEST)
 
 
 
