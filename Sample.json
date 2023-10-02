@@ -1,0 +1,350 @@
+{
+  "_id": "10.1515/jaiscr-2018-0009",
+  "abstract": "<jats:title>Abstract</jats:title>\n               <jats:p>Real-life time series have complex and non-linear structures. Artificial Neural Networks have been frequently used in the literature to analyze non-linear time series. High order artificial neural networks, in view of other artificial neural network types, are more adaptable to the data because of their expandable model order. In this paper, a new recurrent architecture for Pi-Sigma artificial neural networks is proposed. A learning algorithm based on particle swarm optimization is also used as a tool for the training of the proposed neural network. The proposed new high order artificial neural network is applied to three real life time series data and also a simulation study is performed for Istanbul Stock Exchange data set.</jats:p>",
+  "URL": "http://dx.doi.org/10.1515/jaiscr-2018-0009",
+  "resource": {
+    "primary": {
+      "URL": "https://www.sciendo.com/article/10.1515/jaiscr-2018-0009"
+    }
+  },
+  "member": "374",
+  "score": 0,
+  "created": {
+    "date-parts": [
+      [
+        2017,
+        11,
+        3
+      ]
+    ],
+    "date-time": "2017-11-03T19:20:26Z",
+    "timestamp": {
+      "$numberLong": "1509736826000"
+    }
+  },
+  "license": [
+    {
+      "start": {
+        "date-parts": [
+          [
+            2017,
+            11,
+            1
+          ]
+        ],
+        "date-time": "2017-11-01T00:00:00Z",
+        "timestamp": {
+          "$numberLong": "1509494400000"
+        }
+      },
+      "content-version": "unspecified",
+      "delay-in-days": 0,
+      "URL": "http://creativecommons.org/licenses/by-nc-nd/4.0"
+    }
+  ],
+  "ISSN": [
+    "2083-2567"
+  ],
+  "container-title": [
+    "Journal of Artificial Intelligence and Soft Computing Research"
+  ],
+  "issued": {
+    "date-parts": [
+      [
+        2017,
+        11,
+        1
+      ]
+    ]
+  },
+  "issue": "2",
+  "prefix": "10.1515",
+  "reference-count": 22,
+  "indexed": {
+    "date-parts": [
+      [
+        2023,
+        4,
+        19
+      ]
+    ],
+    "date-time": "2023-04-19T14:55:42Z",
+    "timestamp": {
+      "$numberLong": "1681916142736"
+    }
+  },
+  "author": [
+    {
+      "given": "Esra",
+      "family": "Akdeniz",
+      "sequence": "first",
+      "affiliation": [
+        {
+          "name": "Department of Biostatistics, Medical Faculty , Marmara University , Istanbul , Turkey"
+        }
+      ]
+    },
+    {
+      "given": "Erol",
+      "family": "Egrioglu",
+      "sequence": "additional",
+      "affiliation": [
+        {
+          "name": "Department of Statistics, Faculty of Arts and Science , Forecast Research Laboratory , Giresun University , Giresun , 28100 , Turkey"
+        }
+      ]
+    },
+    {
+      "given": "Eren",
+      "family": "Bas",
+      "sequence": "additional",
+      "affiliation": [
+        {
+          "name": "Department of Statistics, Faculty of Arts and Science , Forecast Research Laboratory , Giresun University , Giresun , 28100 , Turkey"
+        }
+      ]
+    },
+    {
+      "given": "Ufuk",
+      "family": "Yolcu",
+      "sequence": "additional",
+      "affiliation": [
+        {
+          "name": "Department of Econometrics, Faculty of Economic and Administrative Sciences , Forecast Research Laboratory , Giresun University , Giresun , 28100 , Turkey"
+        }
+      ]
+    }
+  ],
+  "DOI": "10.1515/jaiscr-2018-0009",
+  "is-referenced-by-count": 21,
+  "published": {
+    "date-parts": [
+      [
+        2017,
+        11,
+        1
+      ]
+    ]
+  },
+  "published-print": {
+    "date-parts": [
+      [
+        2018,
+        4,
+        1
+      ]
+    ]
+  },
+  "alternative-id": [
+    "10.1515/jaiscr-2018-0009"
+  ],
+  "subject": [
+    "Artificial Intelligence",
+    "Computer Vision and Pattern Recognition",
+    "Hardware and Architecture",
+    "Modeling and Simulation",
+    "Information Systems"
+  ],
+  "published-online": {
+    "date-parts": [
+      [
+        2017,
+        11,
+        1
+      ]
+    ]
+  },
+  "content-domain": {
+    "domain": [],
+    "crossmark-restriction": false
+  },
+  "reference": [
+    {
+      "key": "2021040806233152797_j_jaiscr-2018-0009_ref_001_w2aab3b7b4b1b6b1ab1ab1Aa",
+      "doi-asserted-by": "crossref",
+      "unstructured": "[1] R.N. Yadav, P.K. Kalra, J. John, Time series prediction with single multiplicative neuron model, Applied Soft Computing, 7, 2007, 1157-1163.",
+      "DOI": "10.1016/j.asoc.2006.01.003"
+    },
+    {
+      "key": "2021040806233152797_j_jaiscr-2018-0009_ref_002_w2aab3b7b4b1b6b1ab1ab2Aa",
+      "doi-asserted-by": "crossref",
+      "unstructured": "[2] E. Egrioglu, C.H. Aladag, U. Yolcu, and E. Bas, Recurrent multiplicative neuron model artificial neural network for non-linear time series forecasting, Neural Processing Letters 41(2), 2015, 249-258.",
+      "DOI": "10.1007/s11063-014-9342-0"
+    },
+    {
+      "key": "2021040806233152797_j_jaiscr-2018-0009_ref_003_w2aab3b7b4b1b6b1ab1ab3Aa",
+      "doi-asserted-by": "crossref",
+      "unstructured": "[3] O. Gundogdu, E. Egrioglu, C.H. Aladag, and U. Yolcu, Multiplicative neuron model artificial neural network based on gauss activation function, Neural Computing and Applications 27(4), 2015, 927-935",
+      "DOI": "10.1007/s00521-015-1908-x"
+    },
+    {
+      "key": "2021040806233152797_j_jaiscr-2018-0009_ref_004_w2aab3b7b4b1b6b1ab1ab4Aa",
+      "doi-asserted-by": "crossref",
+      "unstructured": "[4] D.E. Rumelhart, and J.L. Mcclelland, Parallel distributed processing: explorations in the microstructure of cognition, Cambridge (Britian): MIT Press, 1986.",
+      "DOI": "10.7551/mitpress/5236.001.0001"
+    },
+    {
+      "key": "2021040806233152797_j_jaiscr-2018-0009_ref_005_w2aab3b7b4b1b6b1ab1ab5Aa",
+      "doi-asserted-by": "crossref",
+      "unstructured": "[5] C.L. Giles, and T. Maxwell, Learning, invariance, and generalization in a high-order neural network, Appl Opt, 26(23), 1978, 4972–8.",
+      "DOI": "10.1364/AO.26.004972"
+    },
+    {
+      "key": "2021040806233152797_j_jaiscr-2018-0009_ref_006_w2aab3b7b4b1b6b1ab1ab6Aa",
+      "doi-asserted-by": "crossref",
+      "unstructured": "[6] R. Durbin, and D.E. Rumelhart, Product units: a computationally powerful and biologically plausible extension to back propagation networks, Neural Computation, 1, 1989:133–42.",
+      "DOI": "10.1162/neco.1989.1.1.133"
+    },
+    {
+      "key": "2021040806233152797_j_jaiscr-2018-0009_ref_007_w2aab3b7b4b1b6b1ab1ab7Aa",
+      "unstructured": "[7] Y. Shin, and J. Gosh, The Pi-sigma Network: An efficient higher-order neural network for pattern classification and function approximation. In Proceedings of the International Joint Conference on Neural Networks, 1991."
+    },
+    {
+      "key": "2021040806233152797_j_jaiscr-2018-0009_ref_008_w2aab3b7b4b1b6b1ab1ab8Aa",
+      "doi-asserted-by": "crossref",
+      "unstructured": "[8] R. Ghazali. A. Husaini, L.H. Ismail, T. Herawan, and Y.M. Hassim, The performance of a recurrent HONN for temperature time series prediction, 2014 International Joint Conference on Neural Networks (IJCNN), July 6-11, Proceeding Book, page 518-524, Beijing, China, 2014.",
+      "DOI": "10.1109/IJCNN.2014.6889789"
+    },
+    {
+      "key": "2021040806233152797_j_jaiscr-2018-0009_ref_009_w2aab3b7b4b1b6b1ab1ab9Aa",
+      "doi-asserted-by": "crossref",
+      "unstructured": "[9] R. Ghazali. A. Husaini, and W. El-Deredy, Application of ridge polynomial neural networks to financial time series prediction. In: 2006 International joint conference on neural networks; July, 16–21, 2006, 913–20.",
+      "DOI": "10.1109/IJCNN.2006.246783"
+    },
+    {
+      "key": "2021040806233152797_j_jaiscr-2018-0009_ref_010_w2aab3b7b4b1b6b1ab1ac10Aa",
+      "doi-asserted-by": "crossref",
+      "unstructured": "[10] R. Ghazali, A.J. Hussain, P. Liatsis, and H. Tawfik, The application of ridge polynomial neural network to multi-step ahead financial time series prediction, Neural Computing & Applications, 17(3), 2008, 311–323.",
+      "DOI": "10.1007/s00521-007-0132-8"
+    },
+    {
+      "key": "2021040806233152797_j_jaiscr-2018-0009_ref_011_w2aab3b7b4b1b6b1ab1ac11Aa",
+      "unstructured": "[11] H. Tawfik, and P. Liatsis, Prediction of non-linear time-series using higher-order neural networks, Proceeding IWSSIP’97 Conference, Poznan, Poland, 1977."
+    },
+    {
+      "key": "2021040806233152797_j_jaiscr-2018-0009_ref_012_w2aab3b7b4b1b6b1ab1ac12Aa",
+      "unstructured": "[12] N. Yong, and D. Wei, A hybrid genetic learning algorithm for Pi– sigma neural network and the analysis of its convergence, In: IEEE fourth international conference on natural computation, 19–23, 2008"
+    },
+    {
+      "key": "2021040806233152797_j_jaiscr-2018-0009_ref_013_w2aab3b7b4b1b6b1ab1ac13Aa",
+      "doi-asserted-by": "crossref",
+      "unstructured": "[13] J. Nayak, B. Naik, and H.S. Behera, A hybrid PSO-GA based Pi sigma neural network (PSNN) with standard back propagation gradient descent learning for classification. International Conference on Control, Instrumentation, Communication and Computational Technologies, ICCICCT 2014, art. no. 6993082, 878-885, 2014b.",
+      "DOI": "10.1109/ICCICCT.2014.6993082"
+    },
+    {
+      "key": "2021040806233152797_j_jaiscr-2018-0009_ref_014_w2aab3b7b4b1b6b1ab1ac14Aa",
+      "doi-asserted-by": "crossref",
+      "unstructured": "[14] J. Nayak, B. Naik, and H.S. Behera, and A. Abraham, Particle swarm optimization based higher order neural network for classification, Smart Innovation, Systems and Technologies, 31, 2015, 401-414.",
+      "DOI": "10.1007/978-81-322-2205-7_38"
+    },
+    {
+      "key": "2021040806233152797_j_jaiscr-2018-0009_ref_015_w2aab3b7b4b1b6b1ab1ac15Aa",
+      "unstructured": "[15] L. Chien-Kuo, Memory-based Sigma–Pi–Sigma neural network, IEEE SMC, TP1F5; 2002, 112–8."
+    },
+    {
+      "key": "2021040806233152797_j_jaiscr-2018-0009_ref_016_w2aab3b7b4b1b6b1ab1ac16Aa",
+      "doi-asserted-by": "crossref",
+      "unstructured": "[16] A.J. Hussain, and P. Liatsis, Recurrent Pi–Sigma networks for DPCM image coding, Neurocomputing, 55, 2002, 363–82.",
+      "DOI": "10.1016/S0925-2312(02)00629-X"
+    },
+    {
+      "key": "2021040806233152797_j_jaiscr-2018-0009_ref_017_w2aab3b7b4b1b6b1ab1ac17Aa",
+      "doi-asserted-by": "crossref",
+      "unstructured": "[17] J. Nayak, D.P. Kanungo, B. Naik, and H.S. Behera, A higher order evolutionary Jordan Pi-sigma neural network with gradient descent learning for classification, 2014 International Conference on High Performance Computing and Applications, ICHPCA 2014, Article number 7045328.",
+      "DOI": "10.1109/ICHPCA.2014.7045328"
+    },
+    {
+      "key": "2021040806233152797_j_jaiscr-2018-0009_ref_018_w2aab3b7b4b1b6b1ab1ac18Aa",
+      "unstructured": "[18] J. Kennedy, R. Eberhart, Particle swarm optimization, In Proceedings of IEEE International Conference on Neural Networks, Piscataway, NJ, USA, IEEE Press., 1995, 1942–1948."
+    },
+    {
+      "key": "2021040806233152797_j_jaiscr-2018-0009_ref_019_w2aab3b7b4b1b6b1ab1ac19Aa",
+      "doi-asserted-by": "crossref",
+      "unstructured": "[19] C.H. Aladag, U. Yolcu, and E. Egrioglu, A new multiplicative seasonal neural network model based on particle swarm optimization, Neural Processing Letters 37(3), 2013, 251-262.10.1007/s11063-012-9244-y",
+      "DOI": "10.1007/s11063-012-9244-y"
+    },
+    {
+      "key": "2021040806233152797_j_jaiscr-2018-0009_ref_020_w2aab3b7b4b1b6b1ab1ac20Aa",
+      "unstructured": "[20] G. Janacek, Practical time series. Oxford University Press Inc., New York, 156, 2001."
+    },
+    {
+      "key": "2021040806233152797_j_jaiscr-2018-0009_ref_021_w2aab3b7b4b1b6b1ab1ac21Aa",
+      "doi-asserted-by": "crossref",
+      "unstructured": "[21] U. Yolcu, E. Egrioglu, C.H. Aladag, A new linear & nonlinear artificial neural network model for time series forecasting, Decision Support Systems, 2013, 1340–1347.10.1016/j.dss.2012.12.006",
+      "DOI": "10.1016/j.dss.2012.12.006"
+    },
+    {
+      "key": "2021040806233152797_j_jaiscr-2018-0009_ref_022_w2aab3b7b4b1b6b1ab1ac22Aa",
+      "doi-asserted-by": "crossref",
+      "unstructured": "[22] J.L. Elman, Finding structure in time, Cognitive Science, 14 (2), 1990, 179–211.10.1207/s15516709cog1402_1",
+      "DOI": "10.1207/s15516709cog1402_1"
+    }
+  ],
+  "title": [
+    "An ARMA Type Pi-Sigma Artificial Neural Network for Nonlinear Time Series Forecasting"
+  ],
+  "link": [
+    {
+      "URL": "http://content.sciendo.com/view/journals/jaiscr/8/2/article-p121.xml",
+      "content-type": "text/html",
+      "content-version": "vor",
+      "intended-application": "text-mining"
+    },
+    {
+      "URL": "https://www.sciendo.com/article/10.1515/jaiscr-2018-0009",
+      "content-type": "unspecified",
+      "content-version": "vor",
+      "intended-application": "similarity-checking"
+    }
+  ],
+  "source": "Crossref",
+  "type": "journal-article",
+  "publisher": "Walter de Gruyter GmbH",
+  "journal-issue": {
+    "issue": "2",
+    "published-online": {
+      "date-parts": [
+        [
+          2017,
+          11,
+          1
+        ]
+      ]
+    },
+    "published-print": {
+      "date-parts": [
+        [
+          2018,
+          4,
+          1
+        ]
+      ]
+    }
+  },
+  "volume": "8",
+  "references-count": 22,
+  "issn-type": [
+    {
+      "value": "2083-2567",
+      "type": "electronic"
+    }
+  ],
+  "deposited": {
+    "date-parts": [
+      [
+        2021,
+        4,
+        8
+      ]
+    ],
+    "date-time": "2021-04-08T19:43:41Z",
+    "timestamp": {
+      "$numberLong": "1617911021000"
+    }
+  },
+  "page": "121-132",
+  "import-source": "crossref_all_json.tar.gz",
+  "last-updated": {
+    "$date": "2023-05-07T19:07:55.810Z"
+  }
+}
