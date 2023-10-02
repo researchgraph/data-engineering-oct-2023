@@ -1,6 +1,12 @@
 # Data Engineering Tasks
 Oct 2023
 
+Deadlines
+Task 1 - Thursday 5th Oct. 5pm
+Task 2 & 3 - Monday 9th Oct. 5pm
+
+
+
 ## Instruction
 * Make a fork from this repository.
 * Complete the following tasks, commit and push the outcomes to the fork.
