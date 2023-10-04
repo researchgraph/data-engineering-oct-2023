@@ -27,9 +27,9 @@ Note: you only need to commit the notebook, and you do not need to provide a bac
 
 
 ## Answers for Task 1 💻
-1.1 - Data into the db
+1.1 - Get the Data into the graph db
 
-In order to load the data in Neo4j, it was neccesary to manipulate the original JSON file, explore it using Python, and then find the way to push it into the Neo4j. The following list of activities show an overview of the performed steps:
+In order to load the data in Neo4j, it was neccesary to manipulate the original JSON file, explore it using Python 🐍, and then find the way to get it into the Neo4j. The following list of activities show an overview of the performed steps:
 
 Activities
 - Manipulate the big JSON to check the most suitable way to get chunks of data
@@ -43,17 +43,17 @@ Activities
     - **PAPER -[WRITTEN_BY]-> AUTHOR**
     - **AUTHOR -[IS_PART_OF]-> ORGANISATION**
 
-The JSON file (after unzip) has a size of around 4.8 GB. This big JSON file cannot be directly load into memory or by JSON package even in Python. After carefully consider the options to load this big JSON, considering the use of Neo4j + APOC, and the limited resources of my local machine, I decided to go for a very non optimal way. I split the big JSON into smaller JSON files, and then to load the data by chunks in the Neo4j DB (Desktop version 5.3.0 + APOC), and using Python 🐍 to iterate through the files and queries, in order of getting the chunks of JSON to populate the graph DB. 
+The JSON file (after unzip) has a size of around 4.8 GB. This big JSON file cannot be directly load into memory or by JSON package even in Python. After carefully consider the options to load this big JSON, considering the use of Neo4j + APOC, and the limited resources of my local machine, I decided to go for a very non optimal way. I split the big JSON into smaller JSON files, and then to load the data by chunks in the Neo4j DB (Desktop version 5.3.0 + APOC), and using Python to iterate through the files and queries, in order of getting the chunks of JSON to populate the graph DB. 
 
-The file [**Transform_BIG_JSON.ipynb**](/Transform_BIG_JSON.ipynb) shows the Jupyter notebook with the Python 🐍 code to get chunks of JSON from a big JSON file. The size of the chunks can be configurable.
+The file [**Transform_BIG_JSON.ipynb**](/Transform_BIG_JSON.ipynb) shows the Jupyter notebook with the Python code to get chunks of JSON from a big JSON file. The size of the chunks can be configurable.
 
 It was considered to get 3 types of nodes:
-- AUTHOR
-- PAPER
-- ORGANISATION
+- **AUTHOR**
+- **PAPER**
+- **ORGANISATION**
 and 2 types of relationships:
-- WRITTEN_BY: PAPER -[WRITTEN_BY]-> AUTHOR
-- IS_PART_OF: AUTHOR -[IS_PART_OF]-> ORGANISATION
+- WRITTEN_BY: **PAPER -[WRITTEN_BY]-> AUTHOR**
+- IS_PART_OF: **AUTHOR -[IS_PART_OF]-> ORGANISATION**
 
 In the case of 1 item (article) per JSON the reading and creation of nodes is done. For each JSON file (eg. paper_1.json),  i.e., for each article, the following procedures were performed using Cypher:
 
@@ -88,7 +88,9 @@ To create the nodes for AUTHORS and the relationships with PAPERS and ORGANISATI
     MERGE (a)-[:IS_PART_OF]->(o)
     RETURN a, p, o
 
-The identifier for PAPERS were the id of each JSON element, for AUTHORS the identifier was the combination of given name and family name, and for ORGANISATIONS, the identifier was the name of the affiliation. This is not the best option, but it was the best generalisable way to call and connect the nodes. To iterate these procedures, the Jupyter notebook  [**ResearchGraph4Neo4j3.ipynb**](/ResearchGraph4Neo4j3.ipynb) shows the Jupyter notebook with the Python 🐍 code where each query is built to be an iterable string, using an iterable index to call each small JSON file. All the steps are done for all the generated JSON files. The image shows part of the nodes created in the graph db.
+The identifier for **PAPERS** were the **id** of each JSON element, for **AUTHORS** the identifier was the combination of **given name** and the **family name**, and for **ORGANISATIONS**, the identifier was the **name** of the affiliation (when available). This is not the best option, but it was the best generalisable way to call and connect all the possible nodes. The ideal scenario would be to use the DOI for each article, the ORCID for each author, and verified identifier for institutions or organisations, however, that is not the case.
+
+To iterate these procedures, the Jupyter notebook [**ResearchGraph4Neo4j3.ipynb**](/ResearchGraph4Neo4j3.ipynb) shows the Python 🐍 code where each query is built to be an iterable string, using an iterable index to call each small JSON file. All the steps were done for all the generated chunk JSON files. The image shows part of the nodes created in the graph db.
 
 <img title="a title" alt="Alt text" src="/example_papers_graph.png">
 
@@ -112,15 +114,15 @@ Once the data is all in the Graph db, we can create a query to get the number of
     WITH count(p) AS count
     RETURN 'Paper' AS label, count
 
-Using the iterative method to populate the graph db, because the low optimal approach used here, the process was able to get just 168116 records from a total of 501629 records in my local machine. The resulting values are in the following table
+Using the iterative method to populate the graph db, because the low optimal approach used here, the process was able to get just **174077** records from a total of **501629** records in my local machine. The resulting values are in the following table
 
 | label         | count  | 
 |---------------|--------|
-| Authors       | 60346  |
-| Organisations | 41253  |
-| Papers        | 167650 |
+| Authors       | 63203  |
+| Organisations | 42992  |
+| Papers        | 174098 |
 
-Knowing that these are not the total values, I double check the values using a Python Script to analise the BIG JSON file and obtain the unique values for PAPERS (id: id or doi), AUTHORS (id: given name + family name) and ORGANISATIONS (id: name). The script is called [**explore_JSON.ipynb**](/explore_JSON.ipynb) and the resulting values are:
+Knowing that these are not the total values, I double checked the values using a Python Script to analise the BIG JSON file and obtain the unique values for **PAPERS** (**id**: id or doi), **AUTHORS** (**id**: given name + family name) and **ORGANISATIONS** (**id**: name). The script is called [**explore_JSON.ipynb**](/explore_JSON.ipynb) and the resulting values are:
 
 | ITEM                 | COUNT  | 
 |----------------------|--------|
@@ -134,6 +136,13 @@ This could be solved with a more tailored approach to consider ALL the posibilit
 
 For more details about construction of queries, resources, references, examples, and additional information, please, review the document [**neo4j_examples.txt**](/neo4j_examples.txt).
 
+Additional issues:
+- Some articles don't have author information
+- Some authors don't have affiliation information
+- Some affiliations have a different format: some of them have a name, some of them have an id or url.
+- Some authors don't have the complete information
+- Some authors don't have a orcid id
+  
 
 ## Task 2
 2.1 - Calculate the following measures in this data
