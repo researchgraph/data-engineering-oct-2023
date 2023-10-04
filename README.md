@@ -37,12 +37,22 @@ Activities
 - Create a db in Neo4j using Neo4j Desktop
 - Create the queries to populate the Graph db
 - Iterate through the queries via Python and Neo4j Python package
+- Populate and create the nodes for AUTHORS, PAPERS and ORGANISATIONS
+- create the relationships PAPER -[WRITTEN_BY]-> AUTHOR & AUTHOR -[IS_PART_OF]-> ORGANISATION
 
-The JSON file after unzip has a size of app 4.8 GB. The file cannot be directly load into memory or by JSON even in Python. After carefully consider the options to load this big JSON, considering the use of Neo4j + APOC, and the limited resources of my local machine, I decided to go for a very non optimal way to load the data by chunks in the Neo4j DB (Desktop version 5.3.0) and using Python 🐍 for geting the chunks of JSON and to populate the DB. 
+The JSON file (after unzip) has a size of around 4.8 GB. This big JSON file cannot be directly load into memory or by JSON package even in Python. After carefully consider the options to load this big JSON, considering the use of Neo4j + APOC, and the limited resources of my local machine, I decided to go for a very non optimal way. I split the big JSON into smaller JSON files, and then to load the data by chunks in the Neo4j DB (Desktop version 5.3.0 + APOC), and using Python 🐍 to iterate through the files and queries, in order of getting the chunks of JSON to populate the graph DB. 
 
-The file **test1_json2.ipynb** shows an example of a Python 🐍 code to get chunks of JSON from a big JSON file. The size of the chunks can be configurable.
+The file **Transform_BIG_JSON.ipynb** shows the Python 🐍 code to get chunks of JSON from a big JSON file. The size of the chunks can be configurable.
 
-For each element in the JSON file, i.e., for each paper, the following procedures in Cypher are 
+It was considered to get 3 types of nodes:
+- AUTHOR
+- PAPER
+- ORGANISATION
+and 2 types of relationships:
+- WRITTEN_BY: PAPER -[WRITTEN_BY]-> AUTHOR
+- IS_PART_OF: AUTHOR -[IS_PART_OF]-> ORGANISATION
+
+In the case of 1 item (article) per JSON the reading and creation of nodes is done. For each JSON file ( eg. paper_1.json),  i.e., for each article, the following procedures were performed using Cypher:
 
 To create the nodes for PAPERS:
 
@@ -75,16 +85,15 @@ To create the nodes for AUTHORS and the relationships with PAPERS and ORGANISATI
     MERGE (a)-[:IS_PART_OF]->(o)
     RETURN a, p, o
 
-To iterate this procedures, the Jupyter notebook **ResearchGraph4Neo4j2.ipynb** shows the Python 🐍 code where each query is built to be iterable through the small JSON files.
-All the steps are done for all the generated JSON files. 
+The identifier for PAPERS were the id of each JSON element, for AUTHORS the identifier was the combination of first name and lastname, and for ORGANISATIONS, the identifier was the name of the affiliation. This is not the best option, but it was the best generalisable way to call and connect the nodes. To iterate these procedures, the Jupyter notebook **ResearchGraph4Neo4j3.ipynb** shows the Python 🐍 code where each query is built to be an iterable string, using an iterable index to call each small JSON file. All the steps are done for all the generated JSON files. 
 
-(*) Note: To make the code easy to use (and less precise), some problems caused by differences in fields between JSON elements (articles) where avoided just by skip them. For instance, some articles don't have authors information, and some authors don't have affiliation information or have a different format of affiliation (id instead of name). This issues could be addressed by a more comprehensive criteria when building the queries and using some logic to detect the differences in structures from the JSON.
+(*) Note: To make the code easy to use (and less precise), some issues caused by differences in fields between JSON elements (articles) were avoided just by skipping them. For instance, some articles don't have authors' information, and some authors don't have affiliation's information or they have a different format for the affiliation (eg. 'id' instead of 'name'). This issues could be addressed by a more comprehensive criteria when building the queries and using some better logic to detect the differences in structures from the JSON.
 
-(**) Note: Another option is to use the apoc.periodic.iterate method, however, it didn't work.
+(**) Note: Another option to load a BIG JSON in an iteratively way is to use the apoc.periodic.iterate method, however, it didn't work in my local
 
 1.2 - Computing the values 🧮
 
-Once the data is all in the Graph db, we can create a query to get the number of nodes per each label. The following is an example query to get the counts.
+Once the data is all in the Graph db, we can create a query to get the number of nodes per each label. The following is an example query to get the counts:
 
     MATCH (a:AUTHOR)
     WITH count(a) AS count
@@ -98,14 +107,21 @@ Once the data is all in the Graph db, we can create a query to get the number of
     WITH count(p) AS count
     RETURN 'Paper' AS label, count
 
-The resulting values are in the following table
+Using the iterative method to populate the graph db, because the low optimal approach used here, the process was able to get just 168116 records from a total of 501629 records.The resulting values are in the following table
 
-    label:	count
-    "Author":	16342
-    "Organisation":	10820
-    "Paper":	15612  
+	label	count
+    "Author"	60346
+    "Organisation"	41253
+    "Paper"	167650
 
-(*) Note: The original number of articles (papers, conferences journals, chapters, etc) is 501629. However, some of them were ignored due to the presence of problems in some fields.
+Knowing that these are not the total values, I double check the values using a Python Script to analise the BIG JSON file and obtain the unique values for PAPERS (id: id or doi), AUTHORS (id: given name + family name) and ORGANISATIONS (id: name). The script is called **explore_JSON.ipynb** and the resulting values are:
+
+    TOTAL RECORDS: 501629
+    UNIQUE AUTHORS: 736857
+    UNIQUE ORGANISATIONS: 150375
+    UNIQUE PAPERS: 501629
+
+(*) Note: The original number of articles (papers, conferences journals, chapters, etc) is 501629. However, some of them were ignored due to the presence of problems in some fields. For instance, in some cases, inside the field **authors** some records have the affiliation as an author, which was avoided by reviewing the properties of each author in the for loops.
 This could be solved with a more tailored approach to consider ALL the posibilities in terms of fields, according to predefined criterias.
 
 
