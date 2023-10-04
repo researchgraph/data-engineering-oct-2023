@@ -55,6 +55,10 @@ and 2 types of relationships:
 - WRITTEN_BY: **PAPER -[WRITTEN_BY]-> AUTHOR**
 - IS_PART_OF: **AUTHOR -[IS_PART_OF]-> ORGANISATION**
 
+The next figure shows the general schema for 1 paper as node:
+
+<img title="a title 0" alt="Alt text" src="/example_papers_graph0.png">
+
 In the case of 1 item (article) per JSON the reading and creation of nodes is done. For each JSON file (eg. paper_1.json),  i.e., for each article, the following procedures were performed using Cypher:
 
 To create the nodes for PAPERS:
