@@ -39,7 +39,9 @@ Activities
 - Generate a Python code to connect to the graph db and perform the queries
 - Iterate through the queries via Python and Neo4j Python package
 - Populate and create the nodes for **AUTHORS**, **PAPERS**, and **ORGANISATIONS**
-- create the relationships **PAPER -[WRITTEN_BY]-> AUTHOR** & **AUTHOR -[IS_PART_OF]-> ORGANISATION**
+- Create the relationships:
+    - **PAPER -[WRITTEN_BY]-> AUTHOR**
+    - **AUTHOR -[IS_PART_OF]-> ORGANISATION**
 
 The JSON file (after unzip) has a size of around 4.8 GB. This big JSON file cannot be directly load into memory or by JSON package even in Python. After carefully consider the options to load this big JSON, considering the use of Neo4j + APOC, and the limited resources of my local machine, I decided to go for a very non optimal way. I split the big JSON into smaller JSON files, and then to load the data by chunks in the Neo4j DB (Desktop version 5.3.0 + APOC), and using Python 🐍 to iterate through the files and queries, in order of getting the chunks of JSON to populate the graph DB. 
 
