@@ -1,0 +1,467 @@
+CHALLENGE https://researchgraph.org/
+
+# Neo4j Desktop Activation Key
+Use this key to activate your copy of Neo4j Desktop for use.
+eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IndlYi10ZXN0QG5lbzRqLmNvbSIsIm1peHBhbmVsSWQiOiIkZGV2aWNlOjE4YWMwZmE2ZjNlOTAzLTAyZTA1MzdhMjBkYzQ2LTI2MDMxZjUxLTEwMDIwMC0xOGFjMGZhNmYzZTkwMyIsIm1peHBhbmVsUHJvamVjdElkIjoiNGJmYjI0MTRhYjk3M2M3NDFiNmYwNjdiZjA2ZDU1NzUiLCJvcmciOiJOZW80aiIsInB1YiI6Im5lbzRqLmNvbSIsInJlZyI6IlRlc3QgTmVvNGoiLCJzdWIiOiJuZW80ai1kZXNrdG9wIiwiZXhwIjoxNzI3MDc3MTg0LCJ2ZXIiOiIqIiwiaXNzIjoibmVvNGouY29tIiwibmJmIjoxNjk1NDU0Nzg0LCJpYXQiOjE2OTU0NTQ3ODQsImp0aSI6ImFvN25xUmV4eiJ9.niy4OdaJAOlh6GEaHxct_mbGwfWDYsV8q9r9ZogOWfMrbnkBJxtnqHJ205xHzXGayZ5fNmsR1MCh9HbiafT33F5PIaxc-oA5BcsebK70z1hwEHP4ckbJQi5nhO48a3EvoObCtXEqHKF1SMsAuH6tCmq1RtufXG5xSlYLQggV61mY0hwalqKIt6b0DqyIHlA-TUMaIgTeh_kfDqopc97VnUGe6OJ3PAVAN2ZIwg3RojGA6bp4_znzR-M0C6VMUloGktKopiWMP__IP9QSma7v3bb3VEJCDrANnbjH6TxhKObgdmgAvPGvH2aKuHjnvgrrirD81kT-yy_HgaO1T3GX-A
+
+
+# EXAMPLE NBA GRAPH DB 
+CREATE 
+(russell:PLAYER{name:"Russell Westbrook", age: 33, number: 0, height: 1.91, weight: 91}),
+(lebron:PLAYER{name:"LeBron James", age: 36, number: 6, height: 2.06, weight: 113}),
+(anthony:PLAYER{name:"Anthony Davis", age: 28, number: 23, height: 2.08, weight: 115}),
+(ja:PLAYER{name:"Ja Morant", age: 22, number: 12, height: 1.91, weight: 79}),
+(luka:PLAYER{name:"Luka Doncic", age: 22, number: 77, height: 2.01, weight: 104}),
+(kristaps:PLAYER{name:"Kristaps Porzingis", age: 26, number: 6, height: 2.21, weight: 109}),
+(kevin:PLAYER{name:"Kevin Durant", age: 33, number: 7, height: 2.08, weight: 109}),
+(james:PLAYER{name:"James Harden", age: 32, number: 13, height: 1.96, weight: 100}),
+(giannis:PLAYER{name:"Giannis Antetokounmpo", age: 26, number: 34, height: 2.11, weight: 110}),
+(khris:PLAYER{name:"Khris Middleton", age: 30, number: 22, height: 2.01, weight: 100}),	
+(joel:PLAYER{name:"Joel Embiid", age: 27, number: 21, height: 2.13, weight: 127}),	
+(tobias:PLAYER{name:"Tobias Harris", age: 29, number: 22, height: 2.03, weight: 100}),
+
+(frank:COACH{name: "Frank Vogel"}),
+(taylor:COACH{name: "Taylor Jenkins"}),
+(jason:COACH{name: "Jason Kidd"}),
+(steve:COACH{name: "Steve Nash"}),
+(mike:COACH{name: "Mike Budenholzer"}),
+(doc:COACH{name: "Doc Rivers"}),
+(stan:COACH{name: "Stan Van Gundy"}),
+
+(lakers:TEAM{name:"LA Lakers"}),
+(memphis:TEAM{name:"Memphis Grizzlies"}),
+(mavericks:TEAM{name:"Dallas Mavericks"}),
+(nets:TEAM{name:"Brooklyn Nets"}),
+(bucks:TEAM{name:"Milwaukee Bucks"}),
+(sixers:TEAM{name:"Philadelphia 76ers"}),
+ 
+(lebron)-[:TEAMMATES]-> (russell),
+(lebron)<-[:TEAMMATES]- (russell),
+(lebron)-[:TEAMMATES]-> (anthony),
+(lebron)<-[:TEAMMATES]- (anthony),
+(russell)-[:TEAMMATES]-> (anthony),
+(russell)<-[:TEAMMATES]- (anthony),
+(luka)-[:TEAMMATES]-> (kristaps),
+(luka)<-[:TEAMMATES]- (kristaps),
+(kevin)-[:TEAMMATES]-> (james),
+(kevin)<-[:TEAMMATES]- (james),
+(giannis)-[:TEAMMATES]-> (khris),
+(giannis)<-[:TEAMMATES]- (khris),
+(joel)-[:TEAMMATES]-> (tobias),
+(joel)<-[:TEAMMATES]- (tobias),
+
+(frank)-[:COACHES]->(lebron),
+(frank)-[:COACHES]->(anthony),
+(frank)-[:COACHES]->(russell),
+(taylor)-[:COACHES]->(ja),
+(jason)-[:COACHES]->(luka),
+(jason)-[:COACHES]->(kristaps),
+(steve)-[:COACHES]->(kevin),
+(steve)-[:COACHES]->(james),
+(mike)-[:COACHES]->(giannis),
+(mike)-[:COACHES]->(khris),
+(doc)-[:COACHES]->(tobias),
+(doc)-[:COACHES]->(joel),
+
+(lebron)-[:PLAYS_FOR {salary: 40000000}]-> (lakers),
+(russell)-[:PLAYS_FOR {salary: 33000000}]-> (lakers),
+(anthony)-[:PLAYS_FOR {salary: 38000000}]-> (lakers),
+(ja)-[:PLAYS_FOR {salary: 8000000}]-> (memphis),
+(luka)-[:PLAYS_FOR {salary: 50000000}]-> (mavericks),
+(kristaps)-[:PLAYS_FOR {salary: 26000000}]-> (mavericks),
+(kevin)-[:PLAYS_FOR {salary: 45000000}]-> (nets),
+(james)-[:PLAYS_FOR{salary: 4200000}]-> (nets),
+(giannis)-[:PLAYS_FOR {salary: 47000000}]-> (bucks),
+(khris)-[:PLAYS_FOR {salary: 43000000}]-> (bucks),
+(joel)-[:PLAYS_FOR {salary: 4000000}]-> (sixers),
+(tobias)-[:PLAYS_FOR {salary: 4000000}]-> (sixers),
+
+(frank)-[:COACHES_FOR]->(lakers),
+(taylor)-[:COACHES_FOR]->(memphis),
+(jason)-[:COACHES_FOR]->(mavericks),
+(steve)-[:COACHES_FOR]->(nets),
+(mike)-[:COACHES_FOR]->(bucks),
+(doc)-[:COACHES_FOR]->(sixers),
+
+
+(lebron)-[:PLAYED_AGAINST {minutes: 38, points: 32, assists: 6, rebounds: 6, turnovers: 2}]-> (memphis),
+(russell)-[:PLAYED_AGAINST {minutes: 29, points: 16, assists: 12, rebounds: 11, turnovers: 16}]-> (memphis),
+(anthony)-[:PLAYED_AGAINST {minutes: 36, points: 27, assists: 2, rebounds: 8, turnovers: 1}]-> (memphis),
+(ja)-[:PLAYED_AGAINST {minutes: 43, points: 42, assists: 7, rebounds: 8, turnovers: 4}]-> (lakers),
+
+(lebron)-[:PLAYED_AGAINST {minutes: 23, points: 25, assists: 12, rebounds: 3, turnovers: 0}]-> (memphis),
+(russell)-[:PLAYED_AGAINST {minutes: 20, points: 11, assists: 10, rebounds: 3, turnovers: 8}]-> (memphis),
+(anthony)-[:PLAYED_AGAINST {minutes: 30, points: 22, assists: 2, rebounds: 8, turnovers: 1}]-> (memphis),
+(ja)-[:PLAYED_AGAINST {minutes: 35, points: 35, assists: 3, rebounds: 4, turnovers: 2}]-> (lakers),
+
+(lebron)-[:PLAYED_AGAINST {minutes: 32, points: 18, assists: 3, rebounds: 6, turnovers: 1}]-> (nets),
+(russell)-[:PLAYED_AGAINST {minutes: 26, points: 26, assists: 11, rebounds: 13, turnovers: 6}]-> (nets),
+(anthony)-[:PLAYED_AGAINST {minutes: 30, points: 26, assists: 7, rebounds: 18, turnovers: 3}]-> (nets),
+(kevin)-[:PLAYED_AGAINST {minutes: 43, points: 45, assists: 5, rebounds: 8, turnovers: 2}]-> (lakers),
+(james)-[:PLAYED_AGAINST {minutes: 46, points: 35, assists: 13, rebounds: 4, turnovers: 7}]-> (lakers),
+
+(kevin)-[:PLAYED_AGAINST {minutes: 34, points: 37, assists: 2, rebounds: 12, turnovers: 1}]-> (memphis),
+(james)-[:PLAYED_AGAINST {minutes: 46, points: 35, assists: 13, rebounds: 4, turnovers: 7}]-> (memphis),
+(ja)-[:PLAYED_AGAINST {minutes: 26, points: 32, assists: 13, rebounds: 6, turnovers: 2}]-> (nets),
+
+
+(luka)-[:PLAYED_AGAINST {minutes: 44, points: 23, assists: 7, rebounds: 13, turnovers: 8}]-> (bucks),
+(kristaps)-[:PLAYED_AGAINST {minutes: 24, points: 16, assists: 2, rebounds: 12, turnovers: 0}]-> (bucks),
+(giannis)-[:PLAYED_AGAINST {minutes: 33, points: 26, assists: 16, rebounds: 18, turnovers: 5}]-> (mavericks),
+(khris)-[:PLAYED_AGAINST {minutes: 46, points: 35, assists: 3, rebounds: 4, turnovers: 3}]-> (mavericks),
+
+(luka)-[:PLAYED_AGAINST {minutes: 33, points: 28, assists: 6, rebounds: 3, turnovers: 3}]-> (sixers),
+(kristaps)-[:PLAYED_AGAINST {minutes: 24, points: 18, assists: 4, rebounds: 11, turnovers: 1}]-> (sixers),
+(joel)-[:PLAYED_AGAINST {minutes: 25, points: 29, assists: 7, rebounds: 22, turnovers: 2}]-> (mavericks),
+(tobias)-[:PLAYED_AGAINST {minutes: 34, points: 18, assists: 13, rebounds: 4, turnovers: 0}]-> (mavericks),
+
+(giannis)-[:PLAYED_AGAINST {minutes: 45, points: 36, assists: 5, rebounds: 12, turnovers: 3}]-> (sixers),
+(khris)-[:PLAYED_AGAINST {minutes: 35, points: 22, assists: 5, rebounds: 6, turnovers: 0}]-> (sixers),
+(joel)-[:PLAYED_AGAINST {minutes: 33, points: 23, assists: 3, rebounds: 10, turnovers: 3}]-> (bucks),
+(tobias)-[:PLAYED_AGAINST {minutes: 38, points: 23, assists: 4, rebounds: 5, turnovers: 1}]-> (bucks),
+
+(kevin)-[:PLAYED_AGAINST {minutes: 29, points: 28, assists: 6, rebounds: 8, turnovers: 0}]-> (mavericks),
+(james)-[:PLAYED_AGAINST {minutes: 35, points: 17, assists: 10, rebounds: 8, turnovers: 5}]-> (mavericks),
+(luka)-[:PLAYED_AGAINST {minutes: 37, points: 35, assists: 6, rebounds: 11, turnovers: 4}]-> (nets),
+(kristaps)-[:PLAYED_AGAINST {minutes: 34, points: 27, assists: 4, rebounds: 8, turnovers: 0}]-> (nets),
+
+(lebron)-[:PLAYED_AGAINST {minutes: 32, points: 27, assists: 12, rebounds: 10, turnovers: 4}]-> (sixers),
+(russell)-[:PLAYED_AGAINST {minutes: 25, points: 19, assists: 9, rebounds: 14, turnovers: 5}]-> (sixers),
+(anthony)-[:PLAYED_AGAINST {minutes: 32, points: 22, assists: 7, rebounds: 12, turnovers: 2}]-> (sixers),
+(joel)-[:PLAYED_AGAINST {minutes: 36, points: 36, assists: 7, rebounds: 12, turnovers: 0}]-> (lakers),
+(tobias)-[:PLAYED_AGAINST {minutes: 32, points: 22, assists: 1, rebounds: 7, turnovers: 0}]-> (lakers);
+
+
+# EXAMPLE 
+CALL apoc.load.jason("") YIELD value RETURN value LIMIT 10
+
+# real file artificial intelligence papers : NOW IS IN THE IMPORT FOLDER INSIDE THE DB FOLDER 
+D:\data_researchgraph\json\artificial_intelligence.json
+
+# LINE TO GET VALUES 
+CALL apoc.load.json("file://D:/data_researchgraph/json/artificial_intelligence.json") YIELD value RETURN value LIMIT 10
+
+CALL apoc.load.json("file://artificial_intelligence.json") YIELD value RETURN value LIMIT 10
+
+# OPTIONS TO ENABLED IN THE NEO4J.CONF OR APOC.CONF : DONE IN THE APOC CONF FILE 
+DONE https://community.neo4j.com/t/setting-apoc-import-file-enabled-true-in-your-neo4j-conf/4293
+
+apoc.export.file.enabled=true
+apoc.import.file.enabled=true
+apoc.import.file.use_neo4j_config=true
+
+# COMMON CODE LINES 
+MATCH (n) DETACH DELETE (n)
+MATCH (n) RETURN n
+
+# conversor csv to json
+https://csvjson.com/csv2json
+
+# CONFIG COLORS FOR OUR CASE PAPERS 
+PUBLICATION: CELESTE
+RESEARCHER: GREEN
+ORGANISATION: VIOLET
+RESEARCH DATA : ORANGE
+
+# EXAMPLE HOW TO CREATE A TOY GRAPH FOR PAPERS, AUTHORS AND ORGANISATIONS
+CREATE 
+(author1:AUTHOR{name:"R Westbrook", age: 33, number: 0, height: 1.91, weight: 91}),
+(author2:AUTHOR{name:"L James", age: 36, number: 6, height: 2.06, weight: 113}),
+(author3:AUTHOR{name:"A Davis", age: 28, number: 23, height: 2.08, weight: 115}),
+(author4:AUTHOR{name:"J Morant", age: 22, number: 12, height: 1.91, weight: 79}),
+(author5:AUTHOR{name:"L Doncic", age: 22, number: 77, height: 2.01, weight: 104}),
+(author6:AUTHOR{name:"K Porzingis", age: 26, number: 6, height: 2.21, weight: 109}),
+(author7:AUTHOR{name:"K Durant", age: 33, number: 7, height: 2.08, weight: 109}),
+(author8:AUTHOR{name:"J Harden", age: 32, number: 13, height: 1.96, weight: 100}),
+(author9:AUTHOR{name:"G Antetokounmpo", age: 26, number: 34, height: 2.11, weight: 110}),
+(author10:AUTHOR{name:"K Middleton", age: 30, number: 22, height: 2.01, weight: 100}),	
+(author11:AUTHOR{name:"J Embiid", age: 27, number: 21, height: 2.13, weight: 127}),	
+(author12:AUTHOR{name:"T Harris", age: 29, number: 22, height: 2.03, weight: 100}),
+
+(frank:PAPER{name: "Paper 1", title: "title", journal: "journal", doi: "DOI1"}),
+(taylor:PAPER{name: "Paper 2", title: "title", journal: "journal", doi: "DOI2"}),
+(jason:PAPER{name: "Paper 3", title: "title", journal: "journal", doi: "DOI3"}),
+(steve:PAPER{name: "Paper 4", title: "title", journal: "journal", doi: "DOI4"}),
+(mike:PAPER{name: "Paper 5", title: "title", journal: "journal", doi: "DOI5"}),
+(doc:PAPER{name: "Paper 6", title: "title", journal: "journal", doi: "DOI6"}),
+(stan:PAPER{name: "Paper 7", title: "title", journal: "journal", doi: "DOI7"}),
+
+(institution1:INSTITUTION{name:"WSU"}),
+(institution2:INSTITUTION{name:"Griffith University"}),
+(institution3:INSTITUTION{name:"Bond University"}),
+(institution4:INSTITUTION{name:"Southern Cross University"}),
+(institution5:INSTITUTION{name:"QUT"}),
+(institution6:INSTITUTION{name:"Monash University"}),
+ 
+(frank)-[:WAS_WRITTEN_BY]->(author1),
+(frank)-[:WAS_WRITTEN_BY]->(author2),
+(frank)-[:WAS_WRITTEN_BY]->(author3),
+(taylor)-[:WAS_WRITTEN_BY]->(author4),
+(jason)-[:WAS_WRITTEN_BY]->(author5),
+(jason)-[:WAS_WRITTEN_BY]->(author6),
+(steve)-[:WAS_WRITTEN_BY]->(author7),
+(steve)-[:WAS_WRITTEN_BY]->(author8),
+(mike)-[:WAS_WRITTEN_BY]->(author9),
+(mike)-[:WAS_WRITTEN_BY]->(author10),
+(doc)-[:WAS_WRITTEN_BY]->(author11),
+(doc)-[:WAS_WRITTEN_BY]->(author12),
+(stan)-[:WAS_WRITTEN_BY]->(author1),
+(stan)-[:WAS_WRITTEN_BY]->(author12),
+
+(author1)-[:WORKS_FOR {salary: 40000000}]-> (institution1),
+(author2)-[:WORKS_FOR {salary: 33000000}]-> (institution1),
+(author3)-[:WORKS_FOR {salary: 38000000}]-> (institution1),
+(author4)-[:WORKS_FOR {salary: 8000000}]-> (institution2),
+(author5)-[:WORKS_FOR {salary: 50000000}]-> (institution3),
+(author6)-[:WORKS_FOR {salary: 26000000}]-> (institution4),
+(author7)-[:WORKS_FOR {salary: 45000000}]-> (institution5),
+(author8)-[:WORKS_FOR{salary: 4200000}]-> (institution5),
+(author9)-[:WORKS_FOR {salary: 47000000}]-> (institution6),
+(author10)-[:WORKS_FOR {salary: 43000000}]-> (institution6),
+(author11)-[:WORKS_FOR {salary: 4000000}]-> (institution6),
+(author12)-[:WORKS_FOR {salary: 4000000}]-> (institution6),
+
+(frank)-[:IS_REF_IN]->(taylor),
+(frank)-[:IS_REF_IN]->(jason),
+(frank)-[:IS_REF_IN]->(doc),
+(taylor)-[:IS_REF_IN]->(jason),
+(jason)-[:IS_REF_IN]->(steve),
+(steve)-[:IS_REF_IN]->(mike),
+(mike)-[:IS_REF_IN]->(doc);
+
+
+# Example 1
+https://www.youtube.com/watch?v=SDsov1IKtE8
+https://github.com/ronidas39/neo4j_python_use_cases
+
+CALL apoc.load.json("file://sample2.json")
+YIELD value
+WITH size(value.subjects) as subject_count, value
+RETURN subject_count, value.name as name, value.subjects as subjects
+
+CALL apoc.load.json("file://chunk_1.json")
+YIELD value
+WITH size(value.author) as subject_count, value
+RETURN subject_count, value.id as id, value.author as authors
+
+CALL apoc.load.json("file:///chunks/chunk_1.json")
+YIELD value
+WITH size(value.author) as subject_count, value
+RETURN subject_count, value.id as id, value.author as authors
+
+# exanple 1.2
+https://stackoverflow.com/questions/57382640/neo4j-create-nodes-from-nested-json-file-and-list
+
+CALL apoc.load.json('file:///data.json') YIELD value as v 
+MERGE (o:org {name: v.organization})
+
+CALL apoc.load.json("file:///chunks/chunk_1.json") YIELD value as v 
+MERGE (p:id {name: v.id})
+
+
+# example 2
+https://medium.com/aarth-software/data-ingestion-with-neo4j-leveraging-csv-and-json-8d25b9705b3
+
+CALL apoc.load.json('file://Customer_DF.json')
+YIELD value
+WITH value
+MERGE(c:Customer{customer_email:value.customerEmail,customer_device:value.customerDevice})
+SET c.customer_phone= value.customerPhone, c.customerip_address= value.customerIPAddress, c.customerbilling_address= value.customerBillingAddress
+RETURN c
+
+CALL apoc.load.json('file://cust_transaction_details.json')
+YIELD value
+MERGE (o:Order {order_id: value.orderId, transaction_id: value.transactionId})
+SET o.payment_methodid = value.paymentMethodId,
+    o.paymentmethodregistration_failure = CASE value.paymentMethodRegistrationFailure WHEN '0' THEN FALSE WHEN '1' THEN TRUE END,
+    o.payment_methodtype = value.paymentMethodType,
+    o.paymentmethod_provider = value.payment_methodprovider,
+    o.transaction_amount = toInteger(value.transactionAmount),
+    o.transaction_failed = CASE value.transactionFailed WHEN '0' THEN FALSE WHEN '1' THEN TRUE END,
+    o.order_state = value.orderState
+RETURN o
+
+CALL apoc.load.json('file://cust_transaction_details.json')
+YIELD value
+WITH value
+MATCH(c:Customer{customer_email:value.customerEmail})
+MATCH(o:Order{order_id:value.orderId, transaction_id: value.transactionId})
+MERGE (c)-[r:MADE_TRANSACTION]->(o)
+RETURN c,o
+
+# EXAMPLE 3 with APOC PERIODIC ITERATE 
+https://stackoverflow.com/questions/42768919/how-to-import-very-large-geojson-files-into-neo4j
+
+CALL apoc.periodic.iterate(
+  "CALL apoc.load.json('https://dummyjson.com/products', '$.features') YIELD value AS features",
+  "UNWIND features as feature MERGE (r:Road {wkt:feature.properties.wkt})",
+  {batchSize:1000, parallel:true}
+)
+
+CALL apoc.periodic.iterate(
+  "CALL apoc.load.json('https://dummyjson.com/products', '$.features') YIELD value AS features",
+  "UNWIND features as feature MERGE (r:Road {wkt:feature.properties.wkt})",
+  {batchSize:1000, parallel:true}
+  )
+
+# eXAMPLE 4: neo4j documentation 
+https://aura.support.neo4j.com/hc/en-us/articles/1500012376402-Using-apoc-to-conditional-loading-large-scale-data-set-from-JSON-or-CSV-files
+
+CALL apoc.periodic.iterate(
+    "CALL apoc.load.json('file:////Users/example/Neo4j/Aura/users.json')
+    YIELD value AS data",
+    "CALL apoc.do.case(
+    [
+        data.uuid is NOT null, 'MERGE (u:User {uuid: data.uuid}) ON CREATE SET u.city=data.city',
+        data.id is NOT null, 'MERGE (u:User {id: data.id}) ON CREATE SET u.city=data.city'
+    ],
+    'CREATE (u:User) SET u.Name=data.Name',
+    {data:data}
+) YIELD value RETURN value",
+{batchSize:2, parallel:false})
+
+# analisis de la carpeta con los archivos por paper (json)
+501629 articulos 
+size 5 gb
+size in disk 5.76 gb 
+
+
+# COMMON CODE LINES 
+MATCH (n) DETACH DELETE (n)
+MATCH (n) RETURN n
+
+# paper
+CALL apoc.load.json("file:///chunks/chunk_3.json")
+YIELD value
+WITH value
+MERGE (paper:PAPER {name: value.doi, code: value.id, doi: value.doi, url: value.url})
+
+# organisations (AFFILIATIONS)
+CALL apoc.load.json("file:///chunks/chunk_3.json")
+YIELD value
+WITH value.author AS authors
+UNWIND authors AS au
+UNWIND au.affiliation as affiliation
+MERGE (o:ORGANISATION {name: affiliation.name})
+RETURN o
+
+# authors
+CALL apoc.load.json("file:///chunks/chunk_3.json")
+YIELD value
+WITH value.author AS authors
+UNWIND authors AS au
+MERGE (a:AUTHOR {name: au.family})
+RETURN a
+
+# authors 2
+CALL apoc.load.json("file:///chunks/chunk_3.json")
+YIELD value
+WITH value.author AS authors
+UNWIND authors AS au
+UNWIND au.affiliation as affiliation
+MERGE (a:AUTHOR {name: au.family}) ON CREATE SET a.given = au.given, a.affiliation = affiliation.name, a.fullname = COALESCE(au.given ,"") + ',' + COALESCE(au.family ,"")           
+RETURN a
+
+# authors 3
+CALL apoc.load.json("file:///chunks/chunk_3.json")
+YIELD value
+WITH value.author AS authors
+UNWIND authors AS au
+UNWIND au.affiliation as affiliation
+MERGE (a:AUTHOR {name: COALESCE(au.given ,"") + ',' + COALESCE(au.family ,"")}) ON CREATE SET a.given = au.given, a.family = au.family, a.affiliation = affiliation.name           
+RETURN a
+
+# authors 4
+CALL apoc.load.json("file:///chunks/chunk_3.json")
+YIELD value
+WITH value.author AS authors, value.id as code
+UNWIND authors AS au
+UNWIND au.affiliation as affiliation
+MERGE (a:AUTHOR {name: COALESCE(au.given ,"") + ',' + COALESCE(au.family ,"")}) ON CREATE SET a.given = au.given, a.family = au.family, a.affiliation = affiliation.name           
+MERGE (p:PAPER {name: code})
+MERGE (o:ORGANISATION {name: affiliation.name})
+MERGE (p)-[:WRITTEN_BY]->(a)
+MERGE (a)-[:IS_PART_OF]->(o)
+RETURN a, p, o
+
+# count elements for nodes for each label
+MATCH (a:AUTHOR)
+WITH count(a) AS count
+RETURN 'Author' AS label, count
+UNION ALL
+MATCH (o:ORGANISATION)
+WITH count(o) AS count
+RETURN 'Organisation' AS label, count
+UNION ALL
+MATCH (p:PAPER)
+WITH count(p) AS count
+RETURN 'Paper' AS label, count
+
+# degree
+create the graph: 
+
+CALL gds.graph.project(
+  'myGraph2',
+  'AUTHOR',
+  {
+    WRITTEN_BY: {
+      orientation: 'UNDIRECTED'
+      
+    }
+  }
+)
+
+get the metrics sorted:
+
+CALL gds.degree.stream('myGraph2')
+YIELD nodeId, score
+RETURN gds.util.asNode(nodeId).name AS name, score AS Centrality
+ORDER BY Centrality DESC, name DESC
+
+
+# READINGS 
+ABOUT CONCATENATE PROPERTIES TO CREATE NODES https://community.neo4j.com/t/concat-attributes-as-string/13519
+ABOUT TIPE MISTMATCH ERROR WHEN CREATING A VALUE (SOMETIMES FOR THE VALUE AFFILIATION BECAUSE IT HAS A FIELD CALLED NAME) https://stackoverflow.com/questions/57961933/neo4j-neo-clienterror-statement-typeerror-type-mismatch-expected-a-map-but-was
+CREATE NODES FROM NESTED JSON https://stackoverflow.com/questions/57382640/neo4j-create-nodes-from-nested-json-file-and-list
+ABOUT JSON MEMORY STREAMING USING IJSON IN PYTHON https://pythonspeed.com/articles/json-memory-streaming/
+USING PYTHON TO LOAD IN LAZY MODE A BIG JSON https://stackoverflow.com/questions/41585138/python-read-1gb-json-file-using-lazy-method
+How to manage a large JSON file efficiently and quickly https://sease.io/2021/10/how-to-manage-a-large-json-file-efficiently-and-quickly.html
+
+Data ingestion from csv and jsons to NEO4J https://medium.com/aarth-software/data-ingestion-with-neo4j-leveraging-csv-and-json-8d25b9705b3
+
+load a big json in neo4j - converting it into csv (?) https://stackoverflow.com/questions/43385030/importing-bulk-json-data-into-neo4j
+
+NEO4J DODOCUMENTATION - data import API https://neo4j.com/docs/getting-started/data-import/
+NEO4J DOCUMENTATION - load json https://neo4j.com/docs/apoc/current/import/load-json/
+NEO4J DOCUMENTATION - FOREACH https://neo4j.com/docs/cypher-manual/current/clauses/foreach/
+NEO4J COMMUNITY - How to "loop" query? https://community.neo4j.com/t/how-to-loop-query/34692
+
+NEO4J DOCUMENTATION - Degree centrality https://neo4j.com/docs/graph-data-science/current/algorithms/degree-centrality/
+
+Using apoc to conditional loading large scale data set from JSON or CSV files https://aura.support.neo4j.com/hc/en-us/articles/1500012376402-Using-apoc-to-conditional-loading-large-scale-data-set-from-JSON-or-CSV-files
+
+NEO4J Tutorial Python Load json data from file using Neo4j Cypher, Apoc (using Jupyter notebook to connect Neo4j db) https://www.youtube.com/watch?v=SDsov1IKtE8&t=826s
+
+# The resulting values are in the following table
+	label	count
+"Author"	45709
+"Organisation"	30569
+"Paper"	99697
+
+	label	count
+"Author"	55315
+"Organisation"	38009
+"Paper"	147322
+
+label	count
+"Author"	58394
+"Organisation"	39960
+"Paper"	161991
+
+	label	count
+"Author"	60346
+"Organisation"	41253
+"Paper"	167650
+
+
+
