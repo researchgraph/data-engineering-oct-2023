@@ -43,7 +43,7 @@ Activities
 
 The JSON file (after unzip) has a size of around 4.8 GB. This big JSON file cannot be directly load into memory or by JSON package even in Python. After carefully consider the options to load this big JSON, considering the use of Neo4j + APOC, and the limited resources of my local machine, I decided to go for a very non optimal way. I split the big JSON into smaller JSON files, and then to load the data by chunks in the Neo4j DB (Desktop version 5.3.0 + APOC), and using Python 🐍 to iterate through the files and queries, in order of getting the chunks of JSON to populate the graph DB. 
 
-The file **Transform_BIG_JSON.ipynb** shows the Python 🐍 code to get chunks of JSON from a big JSON file. The size of the chunks can be configurable.
+The file **Transform_BIG_JSON.ipynb** [here](/Transform_BIG_JSON.ipynb) shows the Python 🐍 code to get chunks of JSON from a big JSON file. The size of the chunks can be configurable.
 
 It was considered to get 3 types of nodes:
 - AUTHOR
@@ -53,7 +53,7 @@ and 2 types of relationships:
 - WRITTEN_BY: PAPER -[WRITTEN_BY]-> AUTHOR
 - IS_PART_OF: AUTHOR -[IS_PART_OF]-> ORGANISATION
 
-In the case of 1 item (article) per JSON the reading and creation of nodes is done. For each JSON file ( eg. paper_1.json),  i.e., for each article, the following procedures were performed using Cypher:
+In the case of 1 item (article) per JSON the reading and creation of nodes is done. For each JSON file (eg. paper_1.json),  i.e., for each article, the following procedures were performed using Cypher:
 
 To create the nodes for PAPERS:
 
