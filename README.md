@@ -43,7 +43,7 @@ Activities
 
 The JSON file (after unzip) has a size of around 4.8 GB. This big JSON file cannot be directly load into memory or by JSON package even in Python. After carefully consider the options to load this big JSON, considering the use of Neo4j + APOC, and the limited resources of my local machine, I decided to go for a very non optimal way. I split the big JSON into smaller JSON files, and then to load the data by chunks in the Neo4j DB (Desktop version 5.3.0 + APOC), and using Python 🐍 to iterate through the files and queries, in order of getting the chunks of JSON to populate the graph DB. 
 
-The file [**Transform_BIG_JSON.ipynb**](/Transform_BIG_JSON.ipynb) shows the Python 🐍 code to get chunks of JSON from a big JSON file. The size of the chunks can be configurable.
+The file [**Transform_BIG_JSON.ipynb**](/Transform_BIG_JSON.ipynb) shows the Jupyter notebook with the Python 🐍 code to get chunks of JSON from a big JSON file. The size of the chunks can be configurable.
 
 It was considered to get 3 types of nodes:
 - AUTHOR
@@ -86,7 +86,7 @@ To create the nodes for AUTHORS and the relationships with PAPERS and ORGANISATI
     MERGE (a)-[:IS_PART_OF]->(o)
     RETURN a, p, o
 
-The identifier for PAPERS were the id of each JSON element, for AUTHORS the identifier was the combination of given name and family name, and for ORGANISATIONS, the identifier was the name of the affiliation. This is not the best option, but it was the best generalisable way to call and connect the nodes. To iterate these procedures, the Jupyter notebook **ResearchGraph4Neo4j3.ipynb** shows the Python 🐍 code where each query is built to be an iterable string, using an iterable index to call each small JSON file. All the steps are done for all the generated JSON files. The image shows part of the nodes created in the graph db.
+The identifier for PAPERS were the id of each JSON element, for AUTHORS the identifier was the combination of given name and family name, and for ORGANISATIONS, the identifier was the name of the affiliation. This is not the best option, but it was the best generalisable way to call and connect the nodes. To iterate these procedures, the Jupyter notebook  [**ResearchGraph4Neo4j3.ipynb**](/ResearchGraph4Neo4j3.ipynb) shows the Jupyter notebook with the Python 🐍 code where each query is built to be an iterable string, using an iterable index to call each small JSON file. All the steps are done for all the generated JSON files. The image shows part of the nodes created in the graph db.
 
 <img title="a title" alt="Alt text" src="/example_papers_graph.png">
 
@@ -118,7 +118,7 @@ Using the iterative method to populate the graph db, because the low optimal app
 | Organisations | 41253  |
 | Papers        | 167650 |
 
-Knowing that these are not the total values, I double check the values using a Python Script to analise the BIG JSON file and obtain the unique values for PAPERS (id: id or doi), AUTHORS (id: given name + family name) and ORGANISATIONS (id: name). The script is called **explore_JSON.ipynb** and the resulting values are:
+Knowing that these are not the total values, I double check the values using a Python Script to analise the BIG JSON file and obtain the unique values for PAPERS (id: id or doi), AUTHORS (id: given name + family name) and ORGANISATIONS (id: name). The script is called [**explore_JSON.ipynb**](/explore_JSON.ipynb) and the resulting values are:
 
 | ITEM                 | COUNT  | 
 |----------------------|--------|
@@ -130,7 +130,7 @@ Knowing that these are not the total values, I double check the values using a P
 (*) Note: The original number of articles (papers, conferences journals, chapters, etc) is 501629. However, some of them were ignored due to the presence of problems in some fields. For instance, in some cases, inside the field **authors** some records have the affiliation as an author, which was avoided by reviewing the properties of each author in the for loops.
 This could be solved with a more tailored approach to consider ALL the posibilities in terms of fields, according to predefined criterias.
 
-For more details about construction of queries, resources, references, examples, and additional information, please, review the document **neo4j_examples.txt**.
+For more details about construction of queries, resources, references, examples, and additional information, please, review the document [**neo4j_examples.txt**](/neo4j_examples.txt).
 
 
 ## Task 2
