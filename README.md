@@ -29,16 +29,17 @@ Note: you only need to commit the notebook, and you do not need to provide a bac
 ## Answers for Task 1 💻
 1.1 - Data into the db
 
-In order to load the data in Neo4j, it was neccesary to manipulate the original JSON file and explore it using Python. 
+In order to load the data in Neo4j, it was neccesary to manipulate the original JSON file, explore it using Python, and then find the way to push it into the Neo4j. The following list of activities show an overview of the performed steps:
 
 Activities
 - Manipulate the big JSON to check the most suitable way to get chunks of data
 - Get small files with chunks of data using Python script
 - Create a db in Neo4j using Neo4j Desktop
 - Create the queries to populate the Graph db
+- Generate a Python code to connect to the graph db and perform the queries
 - Iterate through the queries via Python and Neo4j Python package
-- Populate and create the nodes for AUTHORS, PAPERS and ORGANISATIONS
-- create the relationships PAPER -[WRITTEN_BY]-> AUTHOR & AUTHOR -[IS_PART_OF]-> ORGANISATION
+- Populate and create the nodes for **AUTHORS**, **PAPERS**, and **ORGANISATIONS**
+- create the relationships **PAPER -[WRITTEN_BY]-> AUTHOR** & **AUTHOR -[IS_PART_OF]-> ORGANISATION**
 
 The JSON file (after unzip) has a size of around 4.8 GB. This big JSON file cannot be directly load into memory or by JSON package even in Python. After carefully consider the options to load this big JSON, considering the use of Neo4j + APOC, and the limited resources of my local machine, I decided to go for a very non optimal way. I split the big JSON into smaller JSON files, and then to load the data by chunks in the Neo4j DB (Desktop version 5.3.0 + APOC), and using Python 🐍 to iterate through the files and queries, in order of getting the chunks of JSON to populate the graph DB. 
 
@@ -85,7 +86,7 @@ To create the nodes for AUTHORS and the relationships with PAPERS and ORGANISATI
     MERGE (a)-[:IS_PART_OF]->(o)
     RETURN a, p, o
 
-The identifier for PAPERS were the id of each JSON element, for AUTHORS the identifier was the combination of first name and lastname, and for ORGANISATIONS, the identifier was the name of the affiliation. This is not the best option, but it was the best generalisable way to call and connect the nodes. To iterate these procedures, the Jupyter notebook **ResearchGraph4Neo4j3.ipynb** shows the Python 🐍 code where each query is built to be an iterable string, using an iterable index to call each small JSON file. All the steps are done for all the generated JSON files. The image shows part of the nodes created in the graph db.
+The identifier for PAPERS were the id of each JSON element, for AUTHORS the identifier was the combination of given name and family name, and for ORGANISATIONS, the identifier was the name of the affiliation. This is not the best option, but it was the best generalisable way to call and connect the nodes. To iterate these procedures, the Jupyter notebook **ResearchGraph4Neo4j3.ipynb** shows the Python 🐍 code where each query is built to be an iterable string, using an iterable index to call each small JSON file. All the steps are done for all the generated JSON files. The image shows part of the nodes created in the graph db.
 
 <img title="a title" alt="Alt text" src="/example_papers_graph.png">
 
@@ -95,7 +96,7 @@ The identifier for PAPERS were the id of each JSON element, for AUTHORS the iden
 
 1.2 - Computing the values 🧮
 
-Once the data is all in the Graph db, we can create a query to get the number of nodes per each label. The following is an example query to get the counts:
+Once the data is all in the Graph db, we can create a query to get the number of nodes per each label. The following is an example query to get the counts for each type of node:
 
     MATCH (a:AUTHOR)
     WITH count(a) AS count
@@ -109,12 +110,18 @@ Once the data is all in the Graph db, we can create a query to get the number of
     WITH count(p) AS count
     RETURN 'Paper' AS label, count
 
-Using the iterative method to populate the graph db, because the low optimal approach used here, the process was able to get just 168116 records from a total of 501629 records.The resulting values are in the following table
+Using the iterative method to populate the graph db, because the low optimal approach used here, the process was able to get just 168116 records from a total of 501629 records in my local machine. The resulting values are in the following table
 
 	label	count
     "Author"	60346
     "Organisation"	41253
     "Paper"	167650
+
+| label         | count  | 
+|---------------|--------|
+| Authors       | 60346  |
+| Organisations | 41253  |
+| Papers        | 167650 |
 
 Knowing that these are not the total values, I double check the values using a Python Script to analise the BIG JSON file and obtain the unique values for PAPERS (id: id or doi), AUTHORS (id: given name + family name) and ORGANISATIONS (id: name). The script is called **explore_JSON.ipynb** and the resulting values are:
 
