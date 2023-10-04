@@ -112,11 +112,6 @@ Once the data is all in the Graph db, we can create a query to get the number of
 
 Using the iterative method to populate the graph db, because the low optimal approach used here, the process was able to get just 168116 records from a total of 501629 records in my local machine. The resulting values are in the following table
 
-	label	count
-    "Author"	60346
-    "Organisation"	41253
-    "Paper"	167650
-
 | label         | count  | 
 |---------------|--------|
 | Authors       | 60346  |
@@ -125,13 +120,17 @@ Using the iterative method to populate the graph db, because the low optimal app
 
 Knowing that these are not the total values, I double check the values using a Python Script to analise the BIG JSON file and obtain the unique values for PAPERS (id: id or doi), AUTHORS (id: given name + family name) and ORGANISATIONS (id: name). The script is called **explore_JSON.ipynb** and the resulting values are:
 
-    TOTAL RECORDS: 501629
-    UNIQUE AUTHORS: 736857
-    UNIQUE ORGANISATIONS: 150375
-    UNIQUE PAPERS: 501629
+| ITEM                 | COUNT  | 
+|----------------------|--------|
+| TOTAL RECORDS        | 501629 |
+|  UNIQUE AUTHORS      | 736857 |
+| UNIQUE ORGANISATIONS | 150375 |
+| UNIQUE PAPERS        | 501629 |
 
 (*) Note: The original number of articles (papers, conferences journals, chapters, etc) is 501629. However, some of them were ignored due to the presence of problems in some fields. For instance, in some cases, inside the field **authors** some records have the affiliation as an author, which was avoided by reviewing the properties of each author in the for loops.
 This could be solved with a more tailored approach to consider ALL the posibilities in terms of fields, according to predefined criterias.
+
+For more details about construction of queries, resources, references, examples, and additional information, please, review the document **neo4j_examples.txt**.
 
 
 ## Task 2
