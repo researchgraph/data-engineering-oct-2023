@@ -85,13 +85,13 @@ To create the nodes for AUTHORS and the relationships with PAPERS and ORGANISATI
     MERGE (a)-[:IS_PART_OF]->(o)
     RETURN a, p, o
 
-The identifier for PAPERS were the id of each JSON element, for AUTHORS the identifier was the combination of first name and lastname, and for ORGANISATIONS, the identifier was the name of the affiliation. This is not the best option, but it was the best generalisable way to call and connect the nodes. To iterate these procedures, the Jupyter notebook **ResearchGraph4Neo4j3.ipynb** shows the Python 🐍 code where each query is built to be an iterable string, using an iterable index to call each small JSON file. All the steps are done for all the generated JSON files. 
+The identifier for PAPERS were the id of each JSON element, for AUTHORS the identifier was the combination of first name and lastname, and for ORGANISATIONS, the identifier was the name of the affiliation. This is not the best option, but it was the best generalisable way to call and connect the nodes. To iterate these procedures, the Jupyter notebook **ResearchGraph4Neo4j3.ipynb** shows the Python 🐍 code where each query is built to be an iterable string, using an iterable index to call each small JSON file. All the steps are done for all the generated JSON files. The image shows part of the nodes created in the graph db.
 
 <img title="a title" alt="Alt text" src="/example_papers_graph.png">
 
 (*) Note: To make the code easy to use (and less precise), some issues caused by differences in fields between JSON elements (articles) were avoided just by skipping them. For instance, some articles don't have authors' information, and some authors don't have affiliation's information or they have a different format for the affiliation (eg. 'id' instead of 'name'). This issues could be addressed by a more comprehensive criteria when building the queries and using some better logic to detect the differences in structures from the JSON.
 
-(**) Note: Another option to load a BIG JSON in an iteratively way is to use the apoc.periodic.iterate method, however, it didn't work in my local
+(**) Note: Another option to load a BIG JSON in an iteratively way is to use the apoc.periodic.iterate method, however, it didn't work in my local.
 
 1.2 - Computing the values 🧮
 
