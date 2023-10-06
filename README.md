@@ -166,6 +166,10 @@ The goal is to compute the degree of centrality (doC) for nodes AUTHOR and ORGAN
 
 The code for getting the top 10 organisations' doC is
 
+    MATCH (a:AUTHOR)-[connections:IS_PART_OF]->(o:ORGANISATION)
+    WITH o, count(connections) as nconnections
+    RETURN o.name as name, nconnections
+    ORDER BY nconnections DESC, name DESC LIMIT 10
 
 The values for the top 10 organisations' doC is
 
@@ -184,10 +188,25 @@ The values for the top 10 organisations' doC is
 
 The code for getting the top 10 researchers' doC is
 
+    MATCH (p:PAPER)-[connections:WRITTEN_BY]->(a:AUTHOR)
+    WITH a, count(connections) as nconnections
+    RETURN a.name as name, nconnections
+    ORDER BY nconnections DESC, name DESC LIMIT 10
 
 The values for the top 10 researchers' doC is
 
-
+| Researcher | doC | 
+|---------------|--------|
+| "Nicholas J,Wade"	| 96 | 
+| "Vladik,Kreinovich"	| 82 | 
+| "Abdulazeez,Abdulraheem"	| 48 | 
+| "Johan,Wagemans"	| 46 | 
+| "Yingxu,Wang"	| 45 | 
+| "Jan J,Koenderink"	| 45 | 
+| "VLADIK,KREINOVICH"	| 44 | 
+| "Peter,Wenderoth"	| 35 | 
+| "Salaheldin,Elkatatny"	| 34 | 
+| "Daniela,Rus"	| 34 | 
 
 (*) Note: The JSON transformation script was updated to save batches of articles. See the Jupyter Notebook with the Python code in [**Transform_BIG_JSON2.ipynb**](/jnotebooks/Transform_BIG_JSON2.ipynb). The code to populate the graph db using the batches of articles JSON files is in the Jupyter Notebook [**Batches2Neo4j.ipynb**](/jnotebooks/Batches2Neo4j.ipynb).
 (*) Note: From the total of ~500k records in the original JSON file, just 229978 records (articles) were succesfully loaded into the graph db due to machine limitations. 
@@ -207,14 +226,40 @@ Note: The main challenge in this task is dealing with a large graph. This issue 
 ## Answers for Task 3 💻
 3.1 - Visualise graph and highlight clusters
 
-In order to ...
-The following list of activities show an overview of the performed steps:
+The objective for this part was to visualise the data and use methods for data merging or clustering tools. The following list of activities show an overview of the performed steps:
+- choose a graph visualisation tool
+- configuration and connect to the graph db
+- load the graph and analise and visualise the network
 
-Activities
-- a1
-- a2
+The final obtained figure for this analysis is shown
+<img title="a title" alt="Alt text" src="/imag/screenshot_234756.png">
+
+Additional details:
+- The number of records to analyse were 361958 and edges 202669
+- Gephi tool was used to visualise the data. The plugin for Neo4j and plugin for metrics computation were instaled
+- The following steps were performed to improve the visualisation
+    - Giant component filtering (filter tools to get rid of noisy nodes)
+    - Modularity calculation (statistical tools)
+    - Hub calculation (statistical tools)
+    - Partition of nodes using the cluster metrics
+    - Size of the nodes using ranking agg metric (hub)
+    - layout using force atlas 2
+    - enlarge using extension
+    - adding of additional details to improve the graph
+ 
+The process results are shown in the next images. Metrics results can be found here [**Metrics**](/resources/Modularity Report.docx).
 
 The following image show a part of the network after filtering, clustering and redistributing.
+
+<img title="a title" alt="Alt text" src="/imag/screenshot_234619.png">
+
+
+
+(*) Note: Due machine limitations not all records were analised.
+
+Complementary, Cytoscape was used to inspect the elements in the graph db just as exploratory analysis. An example image of the network after some procedures is shown
+
 <img title="a title" alt="Alt text" src="/imag/FirstGraph.png">
 
-(*) Note: 
+End of the report
+
