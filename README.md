@@ -273,9 +273,9 @@ The following image show a part of the network after filtering, clustering and r
 
 # Bonus
 
-Complementary to the previous visualisation, Cytoscape was used to inspect the elements in the graph db just as exploratory analysis. An example image of the network after some procedures is shown
+Complementary to the previous visualisation, Cytoscape was used to inspect the elements in the graph db just as exploratory analysis. An example image of the network after some procedures is shown. 25000 nodes were imported and filtering was applied. Clustering metrics were computed and the visualisation layout was done using circular with the computed metrics.
 
-<img title="a title" alt="Alt text" src="/imag/FirstGraph.png">
+<img title="a title" alt="Alt text" src="/imag/cyto.png">
 
 End of the report
 
