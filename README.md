@@ -120,7 +120,7 @@ Once the data is all in the Graph db, we can create a query to get the number of
 
 Using the iterative method to populate the graph db, because the low optimal approach used here, the process was able to get just **174077** records from a total of **501629** records in my local machine. The resulting values are in the following table
 
-| label         | count  | 
+| Label         | Count  | 
 |---------------|--------|
 | Authors       | 63203  |
 | Organisations | 42992  |
@@ -131,7 +131,7 @@ Knowing that these are not the total values, I double checked the values using a
 | ITEM                 | COUNT  | 
 |----------------------|--------|
 | TOTAL RECORDS        | 501629 |
-|  UNIQUE AUTHORS      | 736857 |
+| UNIQUE AUTHORS      | 736857 |
 | UNIQUE ORGANISATIONS | 150375 |
 | UNIQUE PAPERS        | 501629 |
 
@@ -146,7 +146,17 @@ Additional issues:
 - Some affiliations have a different format: some of them have a name, some of them have an id or url.
 - Some authors don't have the complete information
 - Some authors don't have a orcid id
-  
+
+
+# Update Task 1 (after the deadline)
+
+After updating the scripts to convert BIG JSON into chunks of records and the loader (JSON->Neo4j via Python), the final numbers were 
+
+| Label         | Count  | 
+|---------------|--------|
+| "Author"	| 76883 | 
+| "Organisation"	| 55097 | 
+| "Paper"	| 229978 | 
 
 ## Task 2
 2.1 - Calculate the following measures in this data
@@ -249,15 +259,19 @@ Additional details:
  
 The process results are shown in the next images. Metrics results can be found here [**Metrics**](/resources/Modularity Report.docx).
 
-The following image show a part of the network after filtering, clustering and redistributing.
+<img title="a title" alt="Alt text" src="/imag/screenshot_010035.png">
 
 <img title="a title" alt="Alt text" src="/imag/screenshot_234619.png">
 
+The following image show a part of the network after filtering, clustering and redistributing.
 
+<img title="a title" alt="Alt text" src="/imag/FirstGraph.png">
 
 (*) Note: Due machine limitations not all records were analised.
 
-Complementary, Cytoscape was used to inspect the elements in the graph db just as exploratory analysis. An example image of the network after some procedures is shown
+# Bonus
+
+Complementary to the previous visualisation, Cytoscape was used to inspect the elements in the graph db just as exploratory analysis. An example image of the network after some procedures is shown
 
 <img title="a title" alt="Alt text" src="/imag/FirstGraph.png">
 
