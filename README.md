@@ -219,7 +219,9 @@ The values for the top 10 researchers' doC is
 | "Daniela,Rus"	| 34 | 
 
 (*) Note: The JSON transformation script was updated to save batches of articles. See the Jupyter Notebook with the Python code in [**Transform_BIG_JSON2.ipynb**](/jnotebooks/Transform_BIG_JSON2.ipynb). The code to populate the graph db using the batches of articles JSON files is in the Jupyter Notebook [**Batches2Neo4j.ipynb**](/jnotebooks/Batches2Neo4j.ipynb).
+
 (*) Note: From the total of ~500k records in the original JSON file, just 229978 records (articles) were succesfully loaded into the graph db due to machine limitations. 
+
 (*) Note: Due to some queries required lot of memory, the max memory for transations was reached. In order to solve that, the Neoj4 configuration file was modified to have a max memory of 2g for transactions (dbms.memory.transaction.total.max=2g).
 
 
