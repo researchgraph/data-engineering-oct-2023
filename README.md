@@ -45,7 +45,7 @@ Activities
 
 The JSON file (after unzip) has a size of around 4.8 GB. This big JSON file cannot be directly load into memory or by JSON package even in Python. After carefully consider the options to load this big JSON, considering the use of Neo4j + APOC, and the limited resources of my local machine, I decided to go for a very non optimal way. I split the big JSON into smaller JSON files, and then to load the data by chunks in the Neo4j DB (Desktop version 5.3.0 + APOC), and using Python to iterate through the files and queries, in order of getting the chunks of JSON to populate the graph DB. 
 
-The file [**Transform_BIG_JSON.ipynb**](/Transform_BIG_JSON.ipynb) shows the Jupyter notebook with the Python code to get chunks of JSON from a big JSON file. The size of the chunks can be configurable.
+The file [**Transform_BIG_JSON.ipynb**](/jnotebooks/Transform_BIG_JSON.ipynb) shows the Jupyter notebook with the Python code to get chunks of JSON from a big JSON file. The size of the chunks can be configurable.
 
 It was considered to get 3 types of nodes:
 - **AUTHOR**
@@ -94,7 +94,7 @@ To create the nodes for AUTHORS and the relationships with PAPERS and ORGANISATI
 
 The identifier for **PAPERS** were the **id** of each JSON element, for **AUTHORS** the identifier was the combination of **given name** and the **family name**, and for **ORGANISATIONS**, the identifier was the **name** of the affiliation (when available). This is not the best option, but it was the best generalisable way to call and connect all the possible nodes. The ideal scenario would be to use the DOI for each article, the ORCID for each author, and verified identifier for institutions or organisations, however, that is not the case.
 
-To iterate these procedures, the Jupyter notebook [**ResearchGraph4Neo4j3.ipynb**](/ResearchGraph4Neo4j3.ipynb) shows the Python 🐍 code where each query is built to be an iterable string, using an iterable index to call each small JSON file. All the steps were done for all the generated chunk JSON files. The image shows part of the nodes created in the graph db.
+To iterate these procedures, the Jupyter notebook [**ResearchGraph4Neo4j3.ipynb**](/jnotebooks/ResearchGraph4Neo4j3.ipynb) shows the Python 🐍 code where each query is built to be an iterable string, using an iterable index to call each small JSON file. All the steps were done for all the generated chunk JSON files. The image shows part of the nodes created in the graph db.
 
 <img title="a title" alt="Alt text" src="/imag/example_papers_graph.png">
 
@@ -126,7 +126,7 @@ Using the iterative method to populate the graph db, because the low optimal app
 | Organisations | 42992  |
 | Papers        | 174098 |
 
-Knowing that these are not the total values, I double checked the values using a Python Script to analise the BIG JSON file and obtain the unique values for **PAPERS** (**id**: id or doi), **AUTHORS** (**id**: given name + family name) and **ORGANISATIONS** (**id**: name). The script is called [**explore_JSON.ipynb**](/explore_JSON.ipynb) and the resulting values are:
+Knowing that these are not the total values, I double checked the values using a Python Script to analise the BIG JSON file and obtain the unique values for **PAPERS** (**id**: id or doi), **AUTHORS** (**id**: given name + family name) and **ORGANISATIONS** (**id**: name). The script is called [**explore_JSON.ipynb**](/jnotebooks/explore_JSON.ipynb) and the resulting values are:
 
 | ITEM                 | COUNT  | 
 |----------------------|--------|
@@ -188,4 +188,7 @@ Activities
 - a1
 - a2
 
-  
+The following image show a part of the network after filtering, clustering and redistributing.
+<img title="a title" alt="Alt text" src="/imag/FirstGraph.png">
+
+(*) Note: 
