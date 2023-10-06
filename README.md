@@ -57,7 +57,7 @@ and 2 types of relationships:
 
 The next figure shows the general schema for 1 paper as node:
 
-<img title="a title 0" alt="Alt text" src="/example_papers_graph0.png">
+<img title="a title 0" alt="Alt text" src="/imag/example_papers_graph0.png">
 
 In the case of 1 item (article) per JSON the reading and creation of nodes is done. For each JSON file (eg. paper_1.json),  i.e., for each article, the following procedures were performed using Cypher:
 
@@ -96,7 +96,7 @@ The identifier for **PAPERS** were the **id** of each JSON element, for **AUTHOR
 
 To iterate these procedures, the Jupyter notebook [**ResearchGraph4Neo4j3.ipynb**](/ResearchGraph4Neo4j3.ipynb) shows the Python 🐍 code where each query is built to be an iterable string, using an iterable index to call each small JSON file. All the steps were done for all the generated chunk JSON files. The image shows part of the nodes created in the graph db.
 
-<img title="a title" alt="Alt text" src="/example_papers_graph.png">
+<img title="a title" alt="Alt text" src="/imag/example_papers_graph.png">
 
 (*) Note: To make the code easy to use (and less precise), some issues caused by differences in fields between JSON elements (articles) were avoided just by skipping them. For instance, some articles don't have authors' information, and some authors don't have affiliation's information or they have a different format for the affiliation (eg. 'id' instead of 'name'). This issues could be addressed by a more comprehensive criteria when building the queries and using some better logic to detect the differences in structures from the JSON.
 
@@ -138,7 +138,7 @@ Knowing that these are not the total values, I double checked the values using a
 (*) Note: The original number of articles (papers, conferences journals, chapters, etc) is 501629. However, some of them were ignored due to the presence of problems in some fields. For instance, in some cases, inside the field **authors** some records have the affiliation as an author, which was avoided by reviewing the properties of each author in the for loops.
 This could be solved with a more tailored approach to consider ALL the posibilities in terms of fields, according to predefined criterias.
 
-For more details about construction of queries, resources, references, examples, and additional information, please, review the document [**neo4j_examples.txt**](/neo4j_examples.txt).
+For more details about construction of queries, resources, references, examples, and additional information, please, review the document [**neo4j_examples.txt**](/resources/neo4j_examples.txt).
 
 Additional issues:
 - Some articles don't have author information
@@ -157,6 +157,16 @@ Note: The main challenge in this task is understanding the structure of the netw
 This article can help with the algorithm: https://neo4j.com/docs/graph-data-science/current/algorithms/degree-centrality/
 
 
+## Answers for Task 2 💻
+1.1 - Calculate metrics for nodes
+
+In order to ...
+The following list of activities show an overview of the performed steps:
+
+Activities
+- a1
+- a2
+  
 
 ## Task 3
 3.1 - Visualise the graph in such a way that shows the overall scale of all the graph nodes and relationships, and highlights the major clusters.  
@@ -166,3 +176,16 @@ These are two graph visualisation tools that can be useful.
 * https://cytoscape.org
 
 Note: The main challenge in this task is dealing with a large graph. This issue can be resolved by merging nodes or creating sub clusters. 
+
+
+## Answers for Task 3 💻
+3.1 - Visualise graph and highlight clusters
+
+In order to ...
+The following list of activities show an overview of the performed steps:
+
+Activities
+- a1
+- a2
+
+  
