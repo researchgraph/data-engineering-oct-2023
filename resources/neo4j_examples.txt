@@ -1,0 +1,932 @@
+CHALLENGE Research graph data https://researchgraph.org/
+
+# real file artificial intelligence papers : NOW IS IN THE IMPORT FOLDER INSIDE THE DB FOLDER 
+D:\data_researchgraph\json\artificial_intelligence.json
+
+
+# analysis of the folder with json files : one per each paper 
+501629 articulos 
+size 5 gb
+size in disk 5.76 gb 
+
+
+# CONFIG COLORS FOR OUR CASE NODES 
+PUBLICATION:    BLUE
+RESEARCHER:     GREEN
+ORGANISATION:   VIOLET
+RESEARCH_DATA : ORANGE ( NO NECESSARY)
+
+
+# READINGS & RESOURCES 
+Neo4j Documentation - data import API https://neo4j.com/docs/getting-started/data-import/
+Neo4j Documentation - load json https://neo4j.com/docs/apoc/current/import/load-json/
+Neo4j Documentation - FOREACH https://neo4j.com/docs/cypher-manual/current/clauses/foreach/
+Neo4j Documentation - Degree centrality https://neo4j.com/docs/graph-data-science/current/algorithms/degree-centrality/
+Neo4j Documentation - Configuration settings https://neo4j.com/docs/operations-manual/current/configuration/configuration-settings/
+Neo4j Documentation - Memory configuration https://neo4j.com/docs/operations-manual/current/performance/memory-configuration/
+Neo4j Documentation - API Documentation and Python https://neo4j.com/docs/api/python-driver/current/api.html
+
+Neo4j - How to Create Conditional and Dynamic Queries in Neo4j Bloom https://neo4j.com/developer-blog/how-to-create-conditional-and-dynamic-queries-in-neo4j-bloom/
+Neo4j - Conditional Cypher execution https://neo4j.com/developer/kb/conditional-cypher-execution/
+Neo4j - Tools for visualization https://neo4j.com/developer/tools-graph-visualization/
+Neo4j - 5 ways to tackle big graph data Keylines + Neo4j https://neo4j.com/blog/5-ways-to-tackle-big-graph-data-keylines-neo4j/
+Neo4j - How to manage memory in Neo4j https://neo4j.com/developer/memory-management/
+Neo4j - Best Practices to Make (Very) Large Updates in Neo4j https://neo4j.com/blog/nodes-2019-best-practices-to-make-large-updates-in-neo4j/
+
+Neo4j Community - How to "loop" query? https://community.neo4j.com/t/how-to-loop-query/34692
+Neo4j Community - About concatenate properties to create node properties https://community.neo4j.com/t/concat-attributes-as-string/13519
+
+Using apoc to conditional loading large scale data set from JSON or CSV files https://aura.support.neo4j.com/hc/en-us/articles/1500012376402-Using-apoc-to-conditional-loading-large-scale-data-set-from-JSON-or-CSV-files
+
+Python - About JSON memory streaming using ijson in Python https://pythonspeed.com/articles/json-memory-streaming/
+Python - Using Python to load a BIG JSON in lazy mode https://stackoverflow.com/questions/41585138/python-read-1gb-json-file-using-lazy-method
+Python - How to manage a large JSON file efficiently and quickly https://sease.io/2021/10/how-to-manage-a-large-json-file-efficiently-and-quickly.html
+Python - Network Analysis in Python - Package NetworkX https://networkx.org/
+Python - Saving JSON with multiple lines https://stackoverflow.com/questions/47896877/json-save-one-dict-per-line
+Python - Converting Python dictionaries to JSON https://www.geeksforgeeks.org/how-to-convert-python-dictionary-to-json/
+Python - Storing Python dictionaries https://stackoverflow.com/questions/7100125/storing-python-dictionaries
+Python - Convert Python dictionary to JSON https://www.geeksforgeeks.org/how-to-convert-python-dictionary-to-json/
+Python - How to add multiple dictionary to a JSON file in Python https://stackoverflow.com/questions/70447696/how-to-add-multiple-dictionary-to-a-json-file-in-python
+
+Data ingestion from csv and JSON files to Neo4j https://medium.com/aarth-software/data-ingestion-with-neo4j-leveraging-csv-and-json-8d25b9705b3
+
+load a big JSON in Neo4j - converting it into csv (?) https://stackoverflow.com/questions/43385030/importing-bulk-json-data-into-neo4j
+About type mismatch error when creating a value (sometimes for the value affiliation because its has a field called name) https://stackoverflow.com/questions/57961933/neo4j-neo-clienterror-statement-typeerror-type-mismatch-expected-a-map-but-was
+Create nodes from nested JSON https://stackoverflow.com/questions/57382640/neo4j-create-nodes-from-nested-json-file-and-list
+Understanding network centrality https://visiblenetworklabs.com/2021/04/16/understanding-network-centrality/
+Filtering a list with multiple conditions Cypher Neo4j https://stackoverflow.com/questions/68789085/filter-a-list-with-multiple-conditions-using-with-in-cypher-neo4j
+Neo4j: How to avoid out of memory in large but simple transaction https://stackoverflow.com/questions/63505922/neo4j-how-to-avoid-out-of-memory-in-large-but-simple-transaction
+
+Visualizing Twitter friend connectings using Gephi https://blog.ouseful.info/2011/07/07/visualising-twitter-friend-connections-using-gephi-an-example-using-wireduk-friends-network/
+Visualizing larger graphs with Gephi https://subscription.packtpub.com/book/data/9781804612743/7/ch07lvl1sec47/visualizing-large-graphs-with-gephi
+Clustering in Gephi https://stackoverflow.com/questions/30358866/clustering-in-gephi-0-8-2
+Getting starte with Neo4j and Gephi https://medium.com/geekculture/getting-started-with-neo4j-a-graph-database-tool-f619e7c80465
+
+VIDEO - NEO4J Tutorial Python Load JSON data from file using Neo4j Cypher, Apoc (using Jupyter notebook to connect Neo4j db) https://www.youtube.com/watch?v=SDsov1IKtE8&t=826s
+
+web conversor csv to JSON https://csvjson.com/csv2json
+
+
+# Neo4j Desktop Activation Key
+Use this key to activate your copy of Neo4j Desktop for use.
+eyJhbGciOiJQUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IndlYi10ZXN0QG5lbzRqLmNvbSIsIm1peHBhbmVsSWQiOiIkZGV2aWNlOjE4YWMwZmE2ZjNlOTAzLTAyZTA1MzdhMjBkYzQ2LTI2MDMxZjUxLTEwMDIwMC0xOGFjMGZhNmYzZTkwMyIsIm1peHBhbmVsUHJvamVjdElkIjoiNGJmYjI0MTRhYjk3M2M3NDFiNmYwNjdiZjA2ZDU1NzUiLCJvcmciOiJOZW80aiIsInB1YiI6Im5lbzRqLmNvbSIsInJlZyI6IlRlc3QgTmVvNGoiLCJzdWIiOiJuZW80ai1kZXNrdG9wIiwiZXhwIjoxNzI3MDc3MTg0LCJ2ZXIiOiIqIiwiaXNzIjoibmVvNGouY29tIiwibmJmIjoxNjk1NDU0Nzg0LCJpYXQiOjE2OTU0NTQ3ODQsImp0aSI6ImFvN25xUmV4eiJ9.niy4OdaJAOlh6GEaHxct_mbGwfWDYsV8q9r9ZogOWfMrbnkBJxtnqHJ205xHzXGayZ5fNmsR1MCh9HbiafT33F5PIaxc-oA5BcsebK70z1hwEHP4ckbJQi5nhO48a3EvoObCtXEqHKF1SMsAuH6tCmq1RtufXG5xSlYLQggV61mY0hwalqKIt6b0DqyIHlA-TUMaIgTeh_kfDqopc97VnUGe6OJ3PAVAN2ZIwg3RojGA6bp4_znzR-M0C6VMUloGktKopiWMP__IP9QSma7v3bb3VEJCDrANnbjH6TxhKObgdmgAvPGvH2aKuHjnvgrrirD81kT-yy_HgaO1T3GX-A
+
+
+# OPTIONS TO ENABLED IN THE NEO4J.CONF OR APOC.CONF : DONE IN THE APOC CONF FILE 
+DONE https://community.neo4j.com/t/setting-apoc-import-file-enabled-true-in-your-neo4j-conf/4293
+
+apoc.export.file.enabled=true
+apoc.import.file.enabled=true
+apoc.import.file.use_neo4j_config=true
+
+
+# EXAMPLE NBA PLAYERS FOR GRAPH DB 
+CREATE 
+(russell:PLAYER{name:"Russell Westbrook", age: 33, number: 0, height: 1.91, weight: 91}),
+(lebron:PLAYER{name:"LeBron James", age: 36, number: 6, height: 2.06, weight: 113}),
+(anthony:PLAYER{name:"Anthony Davis", age: 28, number: 23, height: 2.08, weight: 115}),
+(ja:PLAYER{name:"Ja Morant", age: 22, number: 12, height: 1.91, weight: 79}),
+(luka:PLAYER{name:"Luka Doncic", age: 22, number: 77, height: 2.01, weight: 104}),
+(kristaps:PLAYER{name:"Kristaps Porzingis", age: 26, number: 6, height: 2.21, weight: 109}),
+(kevin:PLAYER{name:"Kevin Durant", age: 33, number: 7, height: 2.08, weight: 109}),
+(james:PLAYER{name:"James Harden", age: 32, number: 13, height: 1.96, weight: 100}),
+(giannis:PLAYER{name:"Giannis Antetokounmpo", age: 26, number: 34, height: 2.11, weight: 110}),
+(khris:PLAYER{name:"Khris Middleton", age: 30, number: 22, height: 2.01, weight: 100}),	
+(joel:PLAYER{name:"Joel Embiid", age: 27, number: 21, height: 2.13, weight: 127}),	
+(tobias:PLAYER{name:"Tobias Harris", age: 29, number: 22, height: 2.03, weight: 100}),
+
+(frank:COACH{name: "Frank Vogel"}),
+(taylor:COACH{name: "Taylor Jenkins"}),
+(jason:COACH{name: "Jason Kidd"}),
+(steve:COACH{name: "Steve Nash"}),
+(mike:COACH{name: "Mike Budenholzer"}),
+(doc:COACH{name: "Doc Rivers"}),
+(stan:COACH{name: "Stan Van Gundy"}),
+
+(lakers:TEAM{name:"LA Lakers"}),
+(memphis:TEAM{name:"Memphis Grizzlies"}),
+(mavericks:TEAM{name:"Dallas Mavericks"}),
+(nets:TEAM{name:"Brooklyn Nets"}),
+(bucks:TEAM{name:"Milwaukee Bucks"}),
+(sixers:TEAM{name:"Philadelphia 76ers"}),
+ 
+(lebron)-[:TEAMMATES]-> (russell),
+(lebron)<-[:TEAMMATES]- (russell),
+(lebron)-[:TEAMMATES]-> (anthony),
+(lebron)<-[:TEAMMATES]- (anthony),
+(russell)-[:TEAMMATES]-> (anthony),
+(russell)<-[:TEAMMATES]- (anthony),
+(luka)-[:TEAMMATES]-> (kristaps),
+(luka)<-[:TEAMMATES]- (kristaps),
+(kevin)-[:TEAMMATES]-> (james),
+(kevin)<-[:TEAMMATES]- (james),
+(giannis)-[:TEAMMATES]-> (khris),
+(giannis)<-[:TEAMMATES]- (khris),
+(joel)-[:TEAMMATES]-> (tobias),
+(joel)<-[:TEAMMATES]- (tobias),
+
+(frank)-[:COACHES]->(lebron),
+(frank)-[:COACHES]->(anthony),
+(frank)-[:COACHES]->(russell),
+(taylor)-[:COACHES]->(ja),
+(jason)-[:COACHES]->(luka),
+(jason)-[:COACHES]->(kristaps),
+(steve)-[:COACHES]->(kevin),
+(steve)-[:COACHES]->(james),
+(mike)-[:COACHES]->(giannis),
+(mike)-[:COACHES]->(khris),
+(doc)-[:COACHES]->(tobias),
+(doc)-[:COACHES]->(joel),
+
+(lebron)-[:PLAYS_FOR {salary: 40000000}]-> (lakers),
+(russell)-[:PLAYS_FOR {salary: 33000000}]-> (lakers),
+(anthony)-[:PLAYS_FOR {salary: 38000000}]-> (lakers),
+(ja)-[:PLAYS_FOR {salary: 8000000}]-> (memphis),
+(luka)-[:PLAYS_FOR {salary: 50000000}]-> (mavericks),
+(kristaps)-[:PLAYS_FOR {salary: 26000000}]-> (mavericks),
+(kevin)-[:PLAYS_FOR {salary: 45000000}]-> (nets),
+(james)-[:PLAYS_FOR{salary: 4200000}]-> (nets),
+(giannis)-[:PLAYS_FOR {salary: 47000000}]-> (bucks),
+(khris)-[:PLAYS_FOR {salary: 43000000}]-> (bucks),
+(joel)-[:PLAYS_FOR {salary: 4000000}]-> (sixers),
+(tobias)-[:PLAYS_FOR {salary: 4000000}]-> (sixers),
+
+(frank)-[:COACHES_FOR]->(lakers),
+(taylor)-[:COACHES_FOR]->(memphis),
+(jason)-[:COACHES_FOR]->(mavericks),
+(steve)-[:COACHES_FOR]->(nets),
+(mike)-[:COACHES_FOR]->(bucks),
+(doc)-[:COACHES_FOR]->(sixers),
+
+(lebron)-[:PLAYED_AGAINST {minutes: 38, points: 32, assists: 6, rebounds: 6, turnovers: 2}]-> (memphis),
+(russell)-[:PLAYED_AGAINST {minutes: 29, points: 16, assists: 12, rebounds: 11, turnovers: 16}]-> (memphis),
+(anthony)-[:PLAYED_AGAINST {minutes: 36, points: 27, assists: 2, rebounds: 8, turnovers: 1}]-> (memphis),
+(ja)-[:PLAYED_AGAINST {minutes: 43, points: 42, assists: 7, rebounds: 8, turnovers: 4}]-> (lakers),
+
+(lebron)-[:PLAYED_AGAINST {minutes: 23, points: 25, assists: 12, rebounds: 3, turnovers: 0}]-> (memphis),
+(russell)-[:PLAYED_AGAINST {minutes: 20, points: 11, assists: 10, rebounds: 3, turnovers: 8}]-> (memphis),
+(anthony)-[:PLAYED_AGAINST {minutes: 30, points: 22, assists: 2, rebounds: 8, turnovers: 1}]-> (memphis),
+(ja)-[:PLAYED_AGAINST {minutes: 35, points: 35, assists: 3, rebounds: 4, turnovers: 2}]-> (lakers),
+
+(lebron)-[:PLAYED_AGAINST {minutes: 32, points: 18, assists: 3, rebounds: 6, turnovers: 1}]-> (nets),
+(russell)-[:PLAYED_AGAINST {minutes: 26, points: 26, assists: 11, rebounds: 13, turnovers: 6}]-> (nets),
+(anthony)-[:PLAYED_AGAINST {minutes: 30, points: 26, assists: 7, rebounds: 18, turnovers: 3}]-> (nets),
+(kevin)-[:PLAYED_AGAINST {minutes: 43, points: 45, assists: 5, rebounds: 8, turnovers: 2}]-> (lakers),
+(james)-[:PLAYED_AGAINST {minutes: 46, points: 35, assists: 13, rebounds: 4, turnovers: 7}]-> (lakers),
+
+(kevin)-[:PLAYED_AGAINST {minutes: 34, points: 37, assists: 2, rebounds: 12, turnovers: 1}]-> (memphis),
+(james)-[:PLAYED_AGAINST {minutes: 46, points: 35, assists: 13, rebounds: 4, turnovers: 7}]-> (memphis),
+(ja)-[:PLAYED_AGAINST {minutes: 26, points: 32, assists: 13, rebounds: 6, turnovers: 2}]-> (nets),
+
+(luka)-[:PLAYED_AGAINST {minutes: 44, points: 23, assists: 7, rebounds: 13, turnovers: 8}]-> (bucks),
+(kristaps)-[:PLAYED_AGAINST {minutes: 24, points: 16, assists: 2, rebounds: 12, turnovers: 0}]-> (bucks),
+(giannis)-[:PLAYED_AGAINST {minutes: 33, points: 26, assists: 16, rebounds: 18, turnovers: 5}]-> (mavericks),
+(khris)-[:PLAYED_AGAINST {minutes: 46, points: 35, assists: 3, rebounds: 4, turnovers: 3}]-> (mavericks),
+
+(luka)-[:PLAYED_AGAINST {minutes: 33, points: 28, assists: 6, rebounds: 3, turnovers: 3}]-> (sixers),
+(kristaps)-[:PLAYED_AGAINST {minutes: 24, points: 18, assists: 4, rebounds: 11, turnovers: 1}]-> (sixers),
+(joel)-[:PLAYED_AGAINST {minutes: 25, points: 29, assists: 7, rebounds: 22, turnovers: 2}]-> (mavericks),
+(tobias)-[:PLAYED_AGAINST {minutes: 34, points: 18, assists: 13, rebounds: 4, turnovers: 0}]-> (mavericks),
+
+(giannis)-[:PLAYED_AGAINST {minutes: 45, points: 36, assists: 5, rebounds: 12, turnovers: 3}]-> (sixers),
+(khris)-[:PLAYED_AGAINST {minutes: 35, points: 22, assists: 5, rebounds: 6, turnovers: 0}]-> (sixers),
+(joel)-[:PLAYED_AGAINST {minutes: 33, points: 23, assists: 3, rebounds: 10, turnovers: 3}]-> (bucks),
+(tobias)-[:PLAYED_AGAINST {minutes: 38, points: 23, assists: 4, rebounds: 5, turnovers: 1}]-> (bucks),
+
+(kevin)-[:PLAYED_AGAINST {minutes: 29, points: 28, assists: 6, rebounds: 8, turnovers: 0}]-> (mavericks),
+(james)-[:PLAYED_AGAINST {minutes: 35, points: 17, assists: 10, rebounds: 8, turnovers: 5}]-> (mavericks),
+(luka)-[:PLAYED_AGAINST {minutes: 37, points: 35, assists: 6, rebounds: 11, turnovers: 4}]-> (nets),
+(kristaps)-[:PLAYED_AGAINST {minutes: 34, points: 27, assists: 4, rebounds: 8, turnovers: 0}]-> (nets),
+
+(lebron)-[:PLAYED_AGAINST {minutes: 32, points: 27, assists: 12, rebounds: 10, turnovers: 4}]-> (sixers),
+(russell)-[:PLAYED_AGAINST {minutes: 25, points: 19, assists: 9, rebounds: 14, turnovers: 5}]-> (sixers),
+(anthony)-[:PLAYED_AGAINST {minutes: 32, points: 22, assists: 7, rebounds: 12, turnovers: 2}]-> (sixers),
+(joel)-[:PLAYED_AGAINST {minutes: 36, points: 36, assists: 7, rebounds: 12, turnovers: 0}]-> (lakers),
+(tobias)-[:PLAYED_AGAINST {minutes: 32, points: 22, assists: 1, rebounds: 7, turnovers: 0}]-> (lakers);
+
+
+# EXAMPLE 
+CALL apoc.load.jason("") YIELD value RETURN value LIMIT 10
+
+
+# LINE TO GET VALUES 
+CALL apoc.load.json("file://D:/data_researchgraph/json/artificial_intelligence.json") YIELD value RETURN value LIMIT 10
+---------------------------------------
+CALL apoc.load.json("file://artificial_intelligence.json") YIELD value RETURN value LIMIT 10
+
+
+# COMMON CODE LINES 
+MATCH (n) DETACH DELETE (n)
+MATCH (n) RETURN n
+
+# EXAMPLE HOW TO CREATE A TOY GRAPH FOR PAPERS, AUTHORS, AND ORGANISATIONS
+CREATE 
+(author1:AUTHOR{name:"R Westbrook", age: 33, number: 0, height: 1.91, weight: 91}),
+(author2:AUTHOR{name:"L James", age: 36, number: 6, height: 2.06, weight: 113}),
+(author3:AUTHOR{name:"A Davis", age: 28, number: 23, height: 2.08, weight: 115}),
+(author4:AUTHOR{name:"J Morant", age: 22, number: 12, height: 1.91, weight: 79}),
+(author5:AUTHOR{name:"L Doncic", age: 22, number: 77, height: 2.01, weight: 104}),
+(author6:AUTHOR{name:"K Porzingis", age: 26, number: 6, height: 2.21, weight: 109}),
+(author7:AUTHOR{name:"K Durant", age: 33, number: 7, height: 2.08, weight: 109}),
+(author8:AUTHOR{name:"J Harden", age: 32, number: 13, height: 1.96, weight: 100}),
+(author9:AUTHOR{name:"G Antetokounmpo", age: 26, number: 34, height: 2.11, weight: 110}),
+(author10:AUTHOR{name:"K Middleton", age: 30, number: 22, height: 2.01, weight: 100}),	
+(author11:AUTHOR{name:"J Embiid", age: 27, number: 21, height: 2.13, weight: 127}),	
+(author12:AUTHOR{name:"T Harris", age: 29, number: 22, height: 2.03, weight: 100}),
+
+(frank:PAPER{name: "Paper 1", title: "title", journal: "journal", doi: "DOI1"}),
+(taylor:PAPER{name: "Paper 2", title: "title", journal: "journal", doi: "DOI2"}),
+(jason:PAPER{name: "Paper 3", title: "title", journal: "journal", doi: "DOI3"}),
+(steve:PAPER{name: "Paper 4", title: "title", journal: "journal", doi: "DOI4"}),
+(mike:PAPER{name: "Paper 5", title: "title", journal: "journal", doi: "DOI5"}),
+(doc:PAPER{name: "Paper 6", title: "title", journal: "journal", doi: "DOI6"}),
+(stan:PAPER{name: "Paper 7", title: "title", journal: "journal", doi: "DOI7"}),
+
+(institution1:INSTITUTION{name:"WSU"}),
+(institution2:INSTITUTION{name:"Griffith University"}),
+(institution3:INSTITUTION{name:"Bond University"}),
+(institution4:INSTITUTION{name:"Southern Cross University"}),
+(institution5:INSTITUTION{name:"QUT"}),
+(institution6:INSTITUTION{name:"Monash University"}),
+ 
+(frank)-[:WAS_WRITTEN_BY]->(author1),
+(frank)-[:WAS_WRITTEN_BY]->(author2),
+(frank)-[:WAS_WRITTEN_BY]->(author3),
+(taylor)-[:WAS_WRITTEN_BY]->(author4),
+(jason)-[:WAS_WRITTEN_BY]->(author5),
+(jason)-[:WAS_WRITTEN_BY]->(author6),
+(steve)-[:WAS_WRITTEN_BY]->(author7),
+(steve)-[:WAS_WRITTEN_BY]->(author8),
+(mike)-[:WAS_WRITTEN_BY]->(author9),
+(mike)-[:WAS_WRITTEN_BY]->(author10),
+(doc)-[:WAS_WRITTEN_BY]->(author11),
+(doc)-[:WAS_WRITTEN_BY]->(author12),
+(stan)-[:WAS_WRITTEN_BY]->(author1),
+(stan)-[:WAS_WRITTEN_BY]->(author12),
+
+(author1)-[:WORKS_FOR {salary: 40000000}]-> (institution1),
+(author2)-[:WORKS_FOR {salary: 33000000}]-> (institution1),
+(author3)-[:WORKS_FOR {salary: 38000000}]-> (institution1),
+(author4)-[:WORKS_FOR {salary: 8000000}]-> (institution2),
+(author5)-[:WORKS_FOR {salary: 50000000}]-> (institution3),
+(author6)-[:WORKS_FOR {salary: 26000000}]-> (institution4),
+(author7)-[:WORKS_FOR {salary: 45000000}]-> (institution5),
+(author8)-[:WORKS_FOR{salary: 4200000}]-> (institution5),
+(author9)-[:WORKS_FOR {salary: 47000000}]-> (institution6),
+(author10)-[:WORKS_FOR {salary: 43000000}]-> (institution6),
+(author11)-[:WORKS_FOR {salary: 4000000}]-> (institution6),
+(author12)-[:WORKS_FOR {salary: 4000000}]-> (institution6),
+
+(frank)-[:IS_REF_IN]->(taylor),
+(frank)-[:IS_REF_IN]->(jason),
+(frank)-[:IS_REF_IN]->(doc),
+(taylor)-[:IS_REF_IN]->(jason),
+(jason)-[:IS_REF_IN]->(steve),
+(steve)-[:IS_REF_IN]->(mike),
+(mike)-[:IS_REF_IN]->(doc);
+
+
+# Example 1: Neo4j and Python use cases 
+https://www.youtube.com/watch?v=SDsov1IKtE8
+https://github.com/ronidas39/neo4j_python_use_cases
+
+CALL apoc.load.json("file://sample2.json")
+YIELD value
+WITH size(value.subjects) as subject_count, value
+RETURN subject_count, value.name as name, value.subjects as subjects
+--------------------------------------------
+
+CALL apoc.load.json("file://chunk_1.json")
+YIELD value
+WITH size(value.author) as subject_count, value
+RETURN subject_count, value.id as id, value.author as authors
+--------------------------------------------
+
+CALL apoc.load.json("file:///chunks/chunk_1.json")
+YIELD value
+WITH size(value.author) as subject_count, value
+RETURN subject_count, value.id as id, value.author as authors
+
+
+# Example 1.2: Neo4j create nodes from nested JSON file and list 
+https://stackoverflow.com/questions/57382640/neo4j-create-nodes-from-nested-json-file-and-list
+
+CALL apoc.load.json('file:///data.json') YIELD value as v 
+MERGE (o:org {name: v.organization})
+-----------------------------------------------
+
+CALL apoc.load.json("file:///chunks/chunk_1.json") YIELD value as v 
+MERGE (p:id {name: v.id})
+
+
+# Example 2: Data ingestion with Neo4j leveraging csv and JSON 
+https://medium.com/aarth-software/data-ingestion-with-neo4j-leveraging-csv-and-json-8d25b9705b3
+
+CALL apoc.load.json('file://Customer_DF.json')
+YIELD value
+WITH value
+MERGE(c:Customer{customer_email:value.customerEmail,customer_device:value.customerDevice})
+SET c.customer_phone= value.customerPhone, c.customerip_address= value.customerIPAddress, c.customerbilling_address= value.customerBillingAddress
+RETURN c
+
+CALL apoc.load.json('file://cust_transaction_details.json')
+YIELD value
+MERGE (o:Order {order_id: value.orderId, transaction_id: value.transactionId})
+SET o.payment_methodid = value.paymentMethodId,
+    o.paymentmethodregistration_failure = CASE value.paymentMethodRegistrationFailure WHEN '0' THEN FALSE WHEN '1' THEN TRUE END,
+    o.payment_methodtype = value.paymentMethodType,
+    o.paymentmethod_provider = value.payment_methodprovider,
+    o.transaction_amount = toInteger(value.transactionAmount),
+    o.transaction_failed = CASE value.transactionFailed WHEN '0' THEN FALSE WHEN '1' THEN TRUE END,
+    o.order_state = value.orderState
+RETURN o
+
+CALL apoc.load.json('file://cust_transaction_details.json')
+YIELD value
+WITH value
+MATCH(c:Customer{customer_email:value.customerEmail})
+MATCH(o:Order{order_id:value.orderId, transaction_id: value.transactionId})
+MERGE (c)-[r:MADE_TRANSACTION]->(o)
+RETURN c,o
+
+
+# Example 3: with APOC PERIODIC ITERATE 
+https://stackoverflow.com/questions/42768919/how-to-import-very-large-geojson-files-into-neo4j
+
+CALL apoc.periodic.iterate(
+  "CALL apoc.load.json('https://dummyjson.com/products', '$.features') YIELD value AS features",
+  "UNWIND features as feature MERGE (r:Road {wkt:feature.properties.wkt})",
+  {batchSize:1000, parallel:true}
+)
+
+
+# Example 4: Neo4j documentation 
+https://aura.support.neo4j.com/hc/en-us/articles/1500012376402-Using-apoc-to-conditional-loading-large-scale-data-set-from-JSON-or-CSV-files
+
+CALL apoc.periodic.iterate(
+    "CALL apoc.load.json('file:////Users/example/Neo4j/Aura/users.json')
+    YIELD value AS data",
+    "CALL apoc.do.case(
+    [
+        data.uuid is NOT null, 'MERGE (u:User {uuid: data.uuid}) ON CREATE SET u.city=data.city',
+        data.id is NOT null, 'MERGE (u:User {id: data.id}) ON CREATE SET u.city=data.city'
+    ],
+    'CREATE (u:User) SET u.Name=data.Name',
+    {data:data}
+) YIELD value RETURN value",
+{batchSize:2, parallel:false})
+
+
+# Cypher query for JSON file with 1 paper
+CALL apoc.load.json("file:///chunks/chunk_3.json")
+YIELD value
+WITH value
+MERGE (paper:PAPER {name: value.doi, code: value.id, doi: value.doi, url: value.url})
+
+
+# Cypher query for organisations (AFFILIATIONS) for JSON file with 1 paper
+CALL apoc.load.json("file:///chunks/chunk_3.json")
+YIELD value
+WITH value.author AS authors
+UNWIND authors AS au
+UNWIND au.affiliation as affiliation
+MERGE (o:ORGANISATION {name: affiliation.name})
+RETURN o
+
+
+# Cypher query for authors for JSON file with 1 paper
+CALL apoc.load.json("file:///chunks/chunk_3.json")
+YIELD value
+WITH value.author AS authors
+UNWIND authors AS au
+MERGE (a:AUTHOR {name: au.family})
+RETURN a
+
+
+# Cypher query for authors 2 for JSON file with 1 paper
+CALL apoc.load.json("file:///chunks/chunk_3.json")
+YIELD value
+WITH value.author AS authors
+UNWIND authors AS au
+UNWIND au.affiliation as affiliation
+MERGE (a:AUTHOR {name: au.family}) ON CREATE SET a.given = au.given, a.affiliation = affiliation.name, a.fullname = COALESCE(au.given ,"") + ',' + COALESCE(au.family ,"")           
+RETURN a
+
+
+# Cypher query for authors 3 for JSON file with 1 paper
+CALL apoc.load.json("file:///chunks/chunk_3.json")
+YIELD value
+WITH value.author AS authors
+UNWIND authors AS au
+UNWIND au.affiliation as affiliation
+MERGE (a:AUTHOR {name: COALESCE(au.given ,"") + ',' + COALESCE(au.family ,"")}) ON CREATE SET a.given = au.given, a.family = au.family, a.affiliation = affiliation.name           
+RETURN a
+
+
+# Cypher query for authors 4 for JSON file with 1 paper
+CALL apoc.load.json("file:///chunks/chunk_3.json")
+YIELD value
+WITH value.author AS authors, value.id as code
+UNWIND authors AS au
+UNWIND au.affiliation as affiliation
+MERGE (a:AUTHOR {name: COALESCE(au.given ,"") + ',' + COALESCE(au.family ,"")}) ON CREATE SET a.given = au.given, a.family = au.family, a.affiliation = affiliation.name           
+MERGE (p:PAPER {name: code})
+MERGE (o:ORGANISATION {name: affiliation.name})
+MERGE (p)-[:WRITTEN_BY]->(a)
+MERGE (a)-[:IS_PART_OF]->(o)
+RETURN a, p, o
+
+
+# count elements for nodes for each label
+MATCH (a:AUTHOR)
+WITH count(a) AS count
+RETURN 'Author' AS label, count
+UNION ALL
+MATCH (o:ORGANISATION)
+WITH count(o) AS count
+RETURN 'Organisation' AS label, count
+UNION ALL
+MATCH (p:PAPER)
+WITH count(p) AS count
+RETURN 'Paper' AS label, count
+
+
+# compute the centrality degree of the graph:
+create the graph: 
+----------------------------
+CALL gds.graph.project(
+  'myGraph2',
+  'AUTHOR',
+  {
+    WRITTEN_BY: {
+      orientation: 'UNDIRECTED'
+      
+    }
+  }
+)
+----------------------------
+
+get the metrics sorted:
+----------------------------
+CALL gds.degree.stream('myGraph2')
+YIELD nodeId, score
+RETURN gds.util.asNode(nodeId).name AS name, score AS Centrality
+ORDER BY Centrality DESC, name DESC
+
+
+# files with problems 
+paper_659.json  : authors are not listed, the do not have information: skip
+paper_2224.json : affiliations without name, they have id instead: skip
+
+
+# counts per node for each label:
+The resulting values are in the following table
+	label	count
+"Author"	45709
+"Organisation"	30569
+"Paper"	99697
+
+	label	count
+"Author"	55315
+"Organisation"	38009
+"Paper"	147322
+
+label	count
+"Author"	58394
+"Organisation"	39960
+"Paper"	161991
+
+	label	count
+"Author"	60346
+"Organisation"	41253
+"Paper"	167650
+
+label	count
+"Author"	63203
+"Organisation"	42992
+"Paper"	174098
+
+abel	count
+"Author"	84767
+"Organisation"	58405
+"Paper"	242182
+
+Iteration 242182, File: CALL apoc.load.json("file:///paps/paper_242182.json")
+
+--------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------
+# new queries for batches of papers (2023-10-05)
+
+# new Cypher query for paper
+CALL apoc.load.json("file:///batches/batch_51.json")
+YIELD value
+WITH value
+MERGE (paper:PAPER {name: value.title, code: value.id, doi: value.doi, url: value.url})
+RETURN paper LIMIT 30
+
+# Cypher query for organisations (AFFILIATIONS)
+CALL apoc.load.json("file:///batches/batch_51.json")
+YIELD value
+WITH value.author AS authors
+UNWIND authors AS au
+WITH au
+WHERE au<>"no"
+UNWIND au.affiliation as affiliation
+WITH affiliation 
+WHERE affiliation IS NOT NULL 
+MERGE (o:ORGANISATION {name: affiliation.name})
+RETURN o LIMIT 30
+====================== CORRECTED =========================
+CALL apoc.load.json("file:///batches/batch_1.json")
+YIELD value
+WITH value.author AS authors
+UNWIND authors AS au
+WITH au
+WHERE au<>"no"
+UNWIND au.affiliation as affiliation
+WITH affiliation.name as name
+WHERE name IS NOT NULL 
+MERGE (o:ORGANISATION {name: name})
+RETURN o LIMIT 30
+
+# Cypher query for authors 4
+CALL apoc.load.json("file:///batches/batch_51.json")
+YIELD value
+WITH value.author AS authors, value.id as code
+UNWIND authors AS au
+WITH au, code
+WHERE au<>"no"
+UNWIND au.affiliation as affiliation
+MERGE (a:AUTHOR {name: COALESCE(au.given ,"") + ',' + COALESCE(au.family ,"")}) ON CREATE SET a.given = au.given, a.family = au.family, a.affiliation = affiliation.name           
+MERGE (p:PAPER {code: code})
+MERGE (o:ORGANISATION {name: affiliation.name})
+MERGE (p)-[:WRITTEN_BY {score: 1}]->(a)
+MERGE (a)-[:IS_PART_OF {score: 1}]->(o)
+RETURN a, p, o LIMIT 30
+====================== CORRECTED =========================
+CALL apoc.load.json("file:///batches/batch_1.json")
+YIELD value
+WITH value.author AS authors, value.id as code
+UNWIND authors AS au
+WITH au, code
+WHERE au<>"no"
+UNWIND au.affiliation as affiliation
+MERGE (a:AUTHOR {name: COALESCE(au.given ,"") + ',' + COALESCE(au.family ,"")}) ON CREATE SET a.given = au.given, a.family = au.family, a.affiliation = affiliation.name           
+MERGE (p:PAPER {code: code})
+MERGE (p)-[:WRITTEN_BY {score: 1}]->(a)
+WITH affiliation.name as affiname, p, a
+WHERE affiname IS NOT NULL 
+MERGE (o:ORGANISATION {name: affiname})
+MERGE (a)-[:IS_PART_OF {score: 1}]->(o)
+RETURN a, p, o LIMIT 30
+
+
+# count elements for nodes for each label
+MATCH (a:AUTHOR)
+WITH count(a) AS count
+RETURN 'Author' AS label, count
+UNION ALL
+MATCH (o:ORGANISATION)
+WITH count(o) AS count
+RETURN 'Organisation' AS label, count
+UNION ALL
+MATCH (p:PAPER)
+WITH count(p) AS count
+RETURN 'Paper' AS label, count
+----------------------
+	label	count
+"Author"	11312
+"Organisation"	14388
+"Paper"	19999
+----------------------
+	label	count
+"Author"	21385
+"Organisation"	22936
+"Paper"	29998
+----------------------
+	label	count
+"Author"	21385
+"Organisation"	22936
+"Paper"	29998
+----------------------
+label	count
+"Author"	76883
+"Organisation"	55097
+"Paper"	229978
+----------------------
+
+
+# creating the centrality degree counting the relationships of each node 
+// Top 10 researchers with the highest degree of centrality
+
+MATCH (p:PAPER)-[connections:WRITTEN_BY]->(a:AUTHOR)
+WITH a, count(connections) as nconnections
+RETURN a.name as name, nconnections
+ORDER BY nconnections DESC, name DESC LIMIT 10
+
+// Top 10 organisations with the highest degree of centrality
+MATCH (a:AUTHOR)-[connections:IS_PART_OF]->(o:ORGANISATION)
+WITH o, count(connections) as nconnections
+RETURN o.name as name, nconnections
+ORDER BY nconnections DESC, name DESC LIMIT 10
+
+--------------------------------------
+TOP AUTHORS 
+name	nconnections
+"Abdulazeez,Abdulraheem"	15
+"DIANE J.,COOK"	10
+"Salaheldin,Elkatatny"	9
+"Mohamed,Mahmoud"	8
+"Chris,Carpenter"	8
+"BENJAMIN W.,WAH"	8
+"Steven,Walczak"	7
+"LAWRENCE B.,HOLDER"	7
+"Kenneth O.,Stanley"	7
+"George A.,Tsihrintzis"	7
+--------------------------------------
+name	nconnections
+"Abdulazeez,Abdulraheem"	29
+"Salaheldin,Elkatatny"	21
+"Mohamed,Mahmoud"	15
+"Takashi,Ikegami"	10
+"Kenneth O.,Stanley"	10
+"DIANE J.,COOK"	10
+"Chris,Carpenter"	9
+"Niki,Margari"	8
+"BENJAMIN W.,WAH"	8
+"Abraham,Pouliakis"	8
+--------------------------------------
+name	nconnections
+"Nicholas J,Wade"	96
+"Vladik,Kreinovich"	82
+"Abdulazeez,Abdulraheem"	48
+"Johan,Wagemans"	46
+"Yingxu,Wang"	45
+"Jan J,Koenderink"	45
+"VLADIK,KREINOVICH"	44
+"Peter,Wenderoth"	35
+"Salaheldin,Elkatatny"	34
+"Daniela,Rus"	34
+--------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------
+TOP ORGANISATIONS 
+name	nconnections
+"Saudi Aramco"	25
+"King Fahd University of Petroleum & Minerals"	17
+"Digestive Disease Center, Showa University, Northern Yokohama Hospital, Yokohama, Japan"	17
+"1Medical Oncology Department, Fondazione IRCCS Istituto Nazionale Tumori, Milan, Italy,"	16
+"Department of Informatics, King’s College London, Bush House, 30 Aldwych, London WC2B 4BG, United Kingdom"	15
+"All authors: Massachusetts General Hospital, Boston, MA."	15
+"State University of Management"	14
+"Information Sciences Institute, University of Southern California, Marina del Rey, CA 90292"	14
+"Department of Medicine, Surgery and Dentistry, University of Salerno, 84081 Baronissi, Italy"	13
+"School of Life Sciences, Institute of Life Science and Green Development, Key Laboratory of Brain-Like Neuromorphic Devices and Systems of Hebei Province, College of Electron and Information Engineering, Hebei University, Baoding 071002, People's Republic of China"	12
+--------------------------------------------------------------------------------------------------------
+name	nconnections
+"King Fahd University of Petroleum & Minerals"	38
+"Saudi Aramco"	37
+"Schlumberger"	26
+"King Fahd University of Petroleum and Minerals"	24
+"DeepMind, London, UK."	22
+"Center for Brain-Inspired Computing Research (CBICR), Beijing Innovation Center for Future Chip, Optical Memory National Engineering Research Center, Department of Precision Instrument, Tsinghua University, Beijing 100084, China."	21
+"State University of Management"	18
+"Division of Cardiovascular Medicine (Q.Z., M.K.B., M.S., R.A.G., E.L., K.E.T., R.M., J.L.P., C.N., I.A.P., Y.P.L., S.G.M., O.R., K.M.C., S.N., S.K.P., V.M.F.), Radcliffe Department of Medicine, University of Oxford, United Kingdom."	17
+"Digestive Disease Center, Showa University, Northern Yokohama Hospital, Yokohama, Japan"	17
+"Autonomous Agents Research Group, School of Informatics, University of Edinburgh, United Kingdom"	17
+--------------------------------------------------------------------------------------------------------
+name	nconnections
+"for the Comparing Alternative Ranibizumab Dosages for Safety and Efficacy in Retinopathy of Prematurity (CARE-ROP) Study Group"	128
+"Tokyo Institute of Technology"	86
+"Saudi Aramco"	83
+"Graduate School of Information Science, Nara Institute of Science and Technology"	68
+"Graduate School of Informatics, Kyoto University"	68
+"National Institute of Informatics"	66
+"Schlumberger"	59
+"Graduate School of Information Science, Nagoya University"	59
+"School of Computer, National University of Defense Technology"	56
+"National Institute of Information and Communications Technology"	53
+
+
+# memory error 
+TransientError: {code: Neo.TransientError.General.MemoryPoolOutOfMemoryError} 
+{message: The allocation of an extra 358,8 MiB would use more than the limit 716,8 MiB. Currently using 534,0 MiB. dbms.memory.transaction.total.max threshold reached}
+
+The allocation of an extra 358,8 MiB would use more than the limit 716,8 MiB. Currently using 534,0 MiB. dbms.memory.transaction.total.max threshold reached
+
+----------------
+SOME QUERIES WERE NOT ALLOWED TO RUN BECAUSE OF MEMORY ERROR, RELATED TO THE MEMORY LIMIT FOR ALLOCATING RESOURCES (TRANSACTION OF THE QUERY), THUS
+MEMORY VARIABLE WAS MODIFIED IN THE NEO4J CONF FILE 
+dbms.memory.transaction.total.max=2g
+
+
+# compute the centrality degree of the graph:
+create the graph: 
+----------------------------
+CALL gds.graph.project(
+  'myGraph2',
+  'AUTHOR',
+  {
+    WRITTEN_BY: {
+      orientation: 'UNDIRECTED'
+      
+    }
+  }
+)
+----------------------------
+
+CALL gds.graph.project(
+  'myGraph',
+  'AUTHOR',
+  {
+    WRITTEN_BY: {
+      orientation: 'REVERSE',
+      properties: ['score']
+    }
+  }
+)
+----------------------------
+
+get the metrics sorted:
+----------------------------
+CALL gds.degree.stream('myGraph2')
+YIELD nodeId, score
+RETURN gds.util.asNode(nodeId).name AS name, score AS Centrality
+ORDER BY Centrality DESC, name DESC LIMIT 10
+
+
+# EXAMPLE DEGREE 
+MATCH (k)
+WITH k, size((k)-[:TYPE]->()) as degree
+WHERE k.Value='30 ' AND degree > 1
+MATCH (k)-[r:TYPE]->(n:ABC)
+RETURN n,r,k,degree;
+----------------------
+MATCH (a:AUTHOR)
+WITH a, size((a)<-[:WRITTEN_BY]-()) as degree
+RETURN a.name AS name, degree
+ORDER BY degree DESC, name DESC LIMIT 10
+
+
+# EXAMPLE TO COUNT NODES 
+MATCH (u:User {lastName:"Example"})-[:PINNED]->(z:Pin)
+RETURN z, SIZE( ()-[:LIKES]->(z) ) as likes
+----------------------
+MATCH (p:PAPER {name: "Paper 1"})-[:WAS_WRITTEN_BY]->(a:AUTHOR)
+RETURN a, SIZE( ()-[:WAS_WRITTEN_BY]->(a) ) as links LIMIT 10
+
+
+# OTHER EXAMMPLE OF COUNTING RELATIONSHIPS
+example of counting cats 
+https://stackoverflow.com/questions/55656030/neo4j-cypher-find-nodes-with-multiple-relationship-counts
+
+MATCH (cat:CAT)-[fed_by:FED_BY]-(:Human)
+WITH cat, count(fed_by) as n_feeders
+----------------------
+MATCH (p:PAPER {name: "Paper 1"})-[w:WAS_WRITTEN_BY]->(a:AUTHOR)
+WITH a, count(w)
+RETURN a, w LIMIT 10
+----------------------
+MATCH (p:PAPER)-[w:WAS_WRITTEN_BY]->(a:AUTHOR)
+WITH a, count(w) as nrelations
+RETURN a.name as name, nrelations 
+ORDER BY nrelations DESC, name DESC LIMIT 10
+
+
+# get STATS metrics via APOC 
+CALL apoc.meta.stats()
+
+
+abelCount	relTypeCount	propertyKeyCount	nodeCount	relCount	labels	relTypes	relTypesCount	stats
+3	2	9	55772	49161	
+{
+  "PAPER": 19999,
+  "ORGANISATION": 14388,
+  "AUTHOR": 21385
+}
+{
+  "(:PAPER)-[:WRITTEN_BY]->()": 23860,
+  "()-[:WRITTEN_BY]->()": 23860,
+  "(:AUTHOR)-[:IS_PART_OF]->()": 25301,
+  "()-[:IS_PART_OF]->(:ORGANISATION)": 25301,
+  "()-[:WRITTEN_BY]->(:AUTHOR)": 23860,
+  "()-[:IS_PART_OF]->()": 25301
+}
+{
+  "WRITTEN_BY": 23860,
+  "IS_PART_OF": 25301
+}
+{
+  "relTypeCount": 2,
+  "propertyKeyCount": 9,
+  "labelCount": 3,
+  "nodeCount": 55772,
+  "relCount": 49161,
+  "labels": {
+    "PAPER": 19999,
+    "ORGANISATION": 14388,
+    "AUTHOR": 21385
+  },
+  "relTypes": {
+    "(:PAPER)-[:WRITTEN_BY]->()": 23860,
+    "()-[:WRITTEN_BY]->()": 23860,
+    "(:AUTHOR)-[:IS_PART_OF]->()": 25301,
+    "()-[:IS_PART_OF]->(:ORGANISATION)": 25301,
+    "()-[:WRITTEN_BY]->(:AUTHOR)": 23860,
+    "()-[:IS_PART_OF]->()": 25301
+  }
+}
+------------------------------------------------------------------------------------------
+	labelCount	relTypeCount	propertyKeyCount	nodeCount	relCount	labels	relTypes	relTypesCount	stats
+3	2	9	74319	49161	
+{
+  "PAPER": 29998,
+  "ORGANISATION": 22936,
+  "AUTHOR": 21385
+}
+{
+  "(:PAPER)-[:WRITTEN_BY]->()": 23860,
+  "()-[:WRITTEN_BY]->()": 23860,
+  "(:AUTHOR)-[:IS_PART_OF]->()": 25301,
+  "()-[:IS_PART_OF]->(:ORGANISATION)": 25301,
+  "()-[:WRITTEN_BY]->(:AUTHOR)": 23860,
+  "()-[:IS_PART_OF]->()": 25301
+}
+{
+  "WRITTEN_BY": 23860,
+  "IS_PART_OF": 25301
+}
+{
+  "relTypeCount": 2,
+  "propertyKeyCount": 9,
+  "labelCount": 3,
+  "nodeCount": 74319,
+  "relCount": 49161,
+  "labels": {
+    "PAPER": 29998,
+    "ORGANISATION": 22936,
+    "AUTHOR": 21385
+  },
+  "relTypes": {
+    "(:PAPER)-[:WRITTEN_BY]->()": 23860,
+    "()-[:WRITTEN_BY]->()": 23860,
+    "(:AUTHOR)-[:IS_PART_OF]->()": 25301,
+    "()-[:IS_PART_OF]->(:ORGANISATION)": 25301,
+    "()-[:WRITTEN_BY]->(:AUTHOR)": 23860,
+    "()-[:IS_PART_OF]->()": 25301
+  }
+}
+Started streaming 1 records in less than 1 ms and completed after 4 ms.
+-------------------------------------------------
+labelCount	relTypeCount	propertyKeyCount	nodeCount	relCount	labels	relTypes	relTypesCount	stats
+3	2	9	361958	202669	
+{
+  "PAPER": 229978,
+  "ORGANISATION": 55097,
+  "AUTHOR": 76883
+}
+{
+  "(:PAPER)-[:WRITTEN_BY]->()": 101509,
+  "()-[:WRITTEN_BY]->()": 101509,
+  "(:AUTHOR)-[:IS_PART_OF]->()": 101160,
+  "()-[:IS_PART_OF]->(:ORGANISATION)": 101160,
+  "()-[:WRITTEN_BY]->(:AUTHOR)": 101509,
+  "()-[:IS_PART_OF]->()": 101160
+}
+{
+  "WRITTEN_BY": 101509,
+  "IS_PART_OF": 101160
+}
+{
+  "relTypeCount": 2,
+  "propertyKeyCount": 9,
+  "labelCount": 3,
+  "nodeCount": 361958,
+  "relCount": 202669,
+  "labels": {
+    "PAPER": 229978,
+    "ORGANISATION": 55097,
+    "AUTHOR": 76883
+  },
+  "relTypes": {
+    "(:PAPER)-[:WRITTEN_BY]->()": 101509,
+    "()-[:WRITTEN_BY]->()": 101509,
+    "(:AUTHOR)-[:IS_PART_OF]->()": 101160,
+    "()-[:IS_PART_OF]->(:ORGANISATION)": 101160,
+    "()-[:WRITTEN_BY]->(:AUTHOR)": 101509,
+    "()-[:IS_PART_OF]->()": 101160
+  }
+}
+Started streaming 1 records after 1 ms and completed after 701 ms.
+
+
+---------------
+# NUMBER OF BATCHES USED 
+Iteration 23, File: CALL apoc.load.json("file:///batches/batch_23.json")
+
+
+
+startpoint = 23
+niter = 51
+
+for i in range(startpoint, niter): 
+    print(str(i+1))
