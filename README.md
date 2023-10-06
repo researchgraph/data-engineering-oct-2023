@@ -160,13 +160,39 @@ This article can help with the algorithm: https://neo4j.com/docs/graph-data-scie
 ## Answers for Task 2 💻
 1.1 - Calculate metrics for nodes
 
-In order to ...
-The following list of activities show an overview of the performed steps:
+The goal is to compute the degree of centrality (doC) for nodes AUTHOR and ORGANISATION. The following list of activities show an overview of the performed steps:
+- load/update the articles information into the graph db
+- compute the number of connections for each node (AUTHOR/ORGANIZATION)
 
-Activities
-- a1
-- a2
-  
+The code for getting the top 10 organisations' doC is
+
+
+The values for the top 10 organisations' doC is
+
+| Organisation | doC | 
+|---------------|--------|
+| "for the Comparing Alternative Ranibizumab Dosages for Safety and Efficacy in Retinopathy of Prematurity (CARE-ROP) Study Group"	| 128 | 
+| "Tokyo Institute of Technology"	| 86 | 
+| "Saudi Aramco"	| 83 | 
+| "Graduate School of Information Science, Nara Institute of Science and Technology"	| 68 | 
+| "Graduate School of Informatics, Kyoto University"	| 68 | 
+| "National Institute of Informatics"	| 66 | 
+| "Schlumberger"	| 59 | 
+| "Graduate School of Information Science, Nagoya University"	| 59 | 
+| "School of Computer, National University of Defense Technology"	| 56 | 
+| "National Institute of Information and Communications Technology"	| 53 | 
+
+The code for getting the top 10 researchers' doC is
+
+
+The values for the top 10 researchers' doC is
+
+
+
+(*) Note: The JSON transformation script was updated to save batches of articles. See the Jupyter Notebook with the Python code in [**Transform_BIG_JSON2.ipynb**](/jnotebooks/Transform_BIG_JSON2.ipynb). The code to populate the graph db using the batches of articles JSON files is in the Jupyter Notebook [**Batches2Neo4j.ipynb**](/jnotebooks/Batches2Neo4j.ipynb).
+(*) Note: From the total of ~500k records in the original JSON file, just 229978 records (articles) were succesfully loaded into the graph db due to machine limitations. 
+(*) Note: Due to some queries required lot of memory, the max memory for transations was reached. In order to solve that, the Neoj4 configuration file was modified to have a max memory of 2g for transactions (dbms.memory.transaction.total.max=2g).
+
 
 ## Task 3
 3.1 - Visualise the graph in such a way that shows the overall scale of all the graph nodes and relationships, and highlights the major clusters.  
