@@ -51,7 +51,9 @@ It was considered to get 3 types of nodes:
 - **AUTHOR**
 - **PAPER**
 - **ORGANISATION**
+
 and 2 types of relationships:
+
 - WRITTEN_BY: **PAPER -[WRITTEN_BY]-> AUTHOR**
 - IS_PART_OF: **AUTHOR -[IS_PART_OF]-> ORGANISATION**
 
