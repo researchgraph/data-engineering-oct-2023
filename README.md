@@ -67,8 +67,8 @@ To create the nodes for PAPERS:
 
     CALL apoc.load.json("file:///paps/paper_1.json")
     YIELD value
-    WITH value.author AS author
-    RETURN author
+    WITH value
+    MERGE (paper:PAPER {name: value.doi, code: value.id, doi: value.doi, url: value.url})
     
 To create the nodes for ORGANISATIONS:
 
